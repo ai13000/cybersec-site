@@ -10,7 +10,10 @@
   <header>
     <nav class="navbar">
       <div class="logo"><a href="index.html" style="color:inherit;text-decoration:none;">CyberSec</a></div>
-      <ul class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#services">Services</a></li>
         <li><a href="case-studies.html" class="nav-active">Case Studies</a></li>
@@ -162,6 +165,23 @@
     </section>
 
   </main>
+
+  <script>
+    var navToggle = document.getElementById('navToggle');
+    var navLinks  = document.getElementById('navLinks');
+    navToggle.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 
 </body>
 </html>

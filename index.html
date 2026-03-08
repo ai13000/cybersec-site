@@ -10,7 +10,10 @@
   <header>
     <nav class="navbar">
       <div class="logo">CyberSec</div>
-      <ul class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="case-studies.html">Case Studies</a></li>
@@ -337,6 +340,24 @@
       <button id="modalOk" class="modal-ok">OK</button>
     </div>
   </div>
+
+  <script>
+    /* Mobile nav */
+    var navToggle = document.getElementById('navToggle');
+    var navLinks  = document.getElementById('navLinks');
+    navToggle.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 
   <script>
     var form  = document.getElementById('contactForm');
