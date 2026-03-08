@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Download CyberSec Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      text-align: center;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 2.5rem 3rem;
+    }
+    h1 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    p { color: #8b949e; margin-bottom: 1.5rem; }
+    a.btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: #238636;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    a.btn:hover { background: #2ea043; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>CyberSec Website</h1>
+    <p>Includes <code>index.html</code> and <code>styles.css</code></p>
+    <a class="btn" id="dl">Download ZIP</a>
+  </div>
+  <script>
+    const b64 = "UEsDBBQAAAAIABeBaFwQqR0vPQEAAJUCAAAKABwAaW5kZXguaHRtbFVUCQADDZ+taQ2frWl1eAsAAQQAAAAABAAAAACFUk1PAyEQvfdXIF7dYm8egKRWjTdNWmM8zrJjl8iyBmib/nsHaGtjYnphPt6b4TGDvHp4Waw+Xh9ZnwanJzIb5sCvFUfPcwKh0xPG5IAJmOkhREyKv62emjvOxC/kYUDFtxZ332NInJnRJ/RE3dku9arDrTXYlOCGWW+TBddEAw7VbHp7bJVscqgX+xbDEo0UNc6Is/6LBXSKx7R3GHtEuqUP+HnMTE2MpY8UVbVsx25finOMIbsUeNgy4yBGxcltIfAKENTZE+TG9cjPlBB0om3cWYMmK4unHkWqlnCQdt2PA3L9TKcUoKUg8B9mxJBnRK2WB+9SRUsiub6n8xIT2nGTuJ5nc4mbNweG2Ivq/OVLsXGHUQp6fxmwOE64/AewntlO8fr2Su1n+h2dKXMgvxRlYl5X3RPlyyf8AVBLAwQUAAAACAAcgWhcykFZdbUBAAA/AwAACgAcAHN0eWxlcy5jc3NVVAkAAxefrWkXn61pdXgLAAEEAAAAAAQAAAAAdVLBcpswEL3zFZrJITOeyAHbITH+gE4P7aVp7wItoFpoGUlxIJn8e1YCWnuSnJCe2H1v39sVe00Y64RtlClYeqBLL6RUpplvJQ7cqZcIlGglWE7QIXlLkhLlGMtrNJ7XolN6LNj1L2gQ2O/v1zfsUbTYiRv2DQyc6PsHrBSGDk4Yxx1YVUcOUR0bi09G8go12oJdpTLLsvvwuCCQg6y3kfh2xX6KUyksW90mazMdgxCpXK8Fiag1DKFYaNUYrjx0rmAVGA82wH+fnFf1SGyEGF8w14sKeAn+GcBcmsA2FroAtaCalv7Nd/3wheosz8rNZrJttsp77AqW9QNzqJVkV9t0m29l5ECnvELyndRUxzFgHvvZ+BeujISBatM0Tr3W2OB/vykUoMf1bpYXwedZ432annt39yDyOlqtwZMHPMwbx8v6KcvgItfKHF1k0MoRgx81URg0cPjM3EaQ1smdyw4i9vAweC6hQiumKZdGi6qHcr/bw+FyoHS9v5sn8pa2ZHYo1tDjxn0gK1o8wZT/57vyQyjDSHoFLWpKJWxNF7DX86CDj/+yjtrj8pyvzdJ+ifAteQdQSwECHgMUAAAACAAXgWhcEKkdLz0BAACVAgAACgAYAAAAAAABAAAApIEAAAAAaW5kZXguaHRtbFVUBQADDZ+taXV4CwABBAAAAAAEAAAAAFBLAQIeAxQAAAAIAByBaFzKQVl1tQEAAD8DAAAKABgAAAAAAAEAAACkgYEBAABzdHlsZXMuY3NzVVQFAAMXn61pdXgLAAEEAAAAAAQAAAAAUEsFBgAAAAACAAIAoAAAAHoDAAAAAA==";
+    const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+    const blob = new Blob([bytes], { type: "application/zip" });
+    const url = URL.createObjectURL(blob);
+    document.getElementById("dl").href = url;
+    document.getElementById("dl").download = "cybersec-site.zip";
+  </script>
+</body>
+</html>
