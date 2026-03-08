@@ -312,6 +312,68 @@ body {
   .section-header h2 { font-size: 1.6rem; }
 }
 
+/* ── Nav active state ── */
+.nav-active {
+  color: #3b82f6 !important;
+  font-weight: 600;
+}
+
+/* ── Page Hero (used on inner pages) ── */
+.page-hero {
+  background: linear-gradient(135deg, #0a1628 0%, #1e3a8a 100%);
+  padding: 100px 24px 60px;
+  text-align: center;
+}
+.page-hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.page-hero h1 {
+  color: #ffffff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 12px 0 16px;
+  line-height: 1.2;
+}
+.page-hero p {
+  color: #93c5fd;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* ── Case Study CTA ── */
+.cs-cta-section {
+  background: #0a1628;
+  padding: 72px 24px;
+  text-align: center;
+}
+.cs-cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.cs-cta-section h2 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.cs-cta-section p {
+  color: #93c5fd;
+  margin: 0 0 28px;
+}
+.cs-cta-btn {
+  display: inline-block;
+  background: #3b82f6;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.cs-cta-btn:hover { background: #2563eb; }
+
 /* ── Case Study Section ── */
 .case-study-section {
   background: #ffffff;
