@@ -52,19 +52,8 @@
 <body>
   <div class="card">
     <h1>CyberSec Website</h1>
-    <p>Includes <code>index.html</code> and <code>styles.css</code></p>
-    <div class="note">
-      After extracting, place your hero image in the same folder and rename it to <code>hero.jpg</code>
-    </div>
-    <a class="btn" id="dl">Download ZIP</a>
+    <p>Includes <code>index.html</code>, <code>styles.css</code>, and hero image</p>
+    <a class="btn" href="cybersec-site.zip" download="cybersec-site.zip">Download ZIP</a>
   </div>
-  <script>
-    const b64 = "UEsDBBQAAAAIAJSEaFzTNT7pQAEAAKUCAAAKABwAaW5kZXguaHRtbFVUCQADmKWtaZilrWl1eAsAAQQAAAAABAAAAACFUsFOAyEQvfsViFe36M0DkGjVeNOk9eBxlh27RBYM0Db9ewd2tzYmpheY4b15+/aBvHx8Xa4/3p5YnwenL2TZmAO/URw9LwcInb5gTA6YgZkeYsKs+Pv6ubnjTPxCHgZUfGdx/x1i5swEn9ETdW+73KsOd9ZgU5trZr3NFlyTDDhUt4ubWSrb7FAvDy3GFRopxr4gzvovFtEpnvLBYeoR6St9xM/5ZGFSqjpSjK5lG7pDHS49xlJS42HHjIOUFKeyhchHgKDOHiEXNoGfOCHoSNu6E4GmOEtHjWpVS5isXfVhQK5faJUCtBQE/sNMGEtGJLWaqnMTLZnk+oHWc0xowzZzfV+2c9xyc2CIvRyLv3wptm6KUtD/14DFnHB9D2D9REhosg2e2U7xmsQcXI+R4pViIowi46AU472RaH2UP1BLAwQUAAAACACThGhcN4zg0jcCAABeBAAACgAcAHN0eWxlcy5jc3NVVAkAA5WlrWmVpa1pdXgLAAEEAAAAAAQAAAAAdZNNb9swDIbv+RUChiIfsFy7adrUOfUwbLvs0m132qJttbJkSEqadNh/HyU7bZN18MEyKZIvH9ILdr/CWAe2kbpg2YY+ehBC6mb8Ks2eO/kSDaWxAi0n02byZzIpjTjE8Npoz2vopDoUbPqAjUH289s0YT+gNR0k7Atq3NH7F1oBmg4OtOMOraxjDaieGmu2WvDKKGML9ikTeZ7fBufRgjco6mUsfLlg32FXgmWLy0mqh2MQIqTrFZCIWuE+BIOSjebSY+cKVqH2aIP5ceu8rA9UjSzaF8z1UCEv0T8j6lMI7MpiFEwtyqaluzfX/f4/qvPPy/v1/YBtROW96QqW93vmjJKC7sDy6nYdaxgnvTTEndRUT4dg86Yfwb9wqQXuKTbLYtepMo15401DQXKm16O8aHweNd5m2Xt2qzXc1BG1Qk8MeOg3tpf3wywDRa6kfnKxgpKOKviDohLaaNx8BLcB0jrQOc0AMYfHvecCK2Nh6PKY6KhqXd5d3+HmtKEsvVuNHXlLWzISijHkvHL/FCtas8Nh/h/vyle0hj1gFTLFjWmDIdx/lsK3kfDF+wlXoKoZGXct43Hc87N5yw4a0rq1ajYNydLHvpmemxr6qYK4M8/b4IeVDFM/u2KxR/CB2Xg8XRiLiqDucIARJBQF1P4Vw7jW0+lpGJS0hFsfmUvt0B9/8tfCBY1eI1jeWBCSksy8YTZgSZhtSpgts2S1TvLlOsnS1WrOsovRkSXxSfN55DkP0v4CUEsBApQDFAAAAAgAlIRoXNM1PulAAQAApQIAAAoAGAAAAAAAAQAAAKSBAAAAAGluZGV4Lmh0bWxVVAUAA5ilrWl1eAsAAQQAAAAABAAAAABQSwEClAMUAAAACACThGhcN4zg0jcCAABeBAAACgAYAAAAAAABAAAApIGEAQAAc3R5bGVzLmNzc1VUBQADlaWtaXV4CwABBAAAAAAEAAAAAFBLBQYAAAAAAgACAKAAAAD/AwAAAAA=";
-    const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
-    const blob = new Blob([bytes], { type: "application/zip" });
-    const url = URL.createObjectURL(blob);
-    document.getElementById("dl").href = url;
-    document.getElementById("dl").download = "cybersec-site.zip";
-  </script>
 </body>
 </html>

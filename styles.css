@@ -52,7 +52,7 @@ body {
 .hero {
   width: 100%;
   height: calc(100vh - 64px);
-  background-image: url('hero.jpg');
+  background-image: url('Hero section3.png');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
