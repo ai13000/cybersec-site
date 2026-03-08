@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CyberSec</title>
   <link rel="stylesheet" href="styles.css" />
-  <!-- EmailJS — sends form data directly to info@cybersecgard.com -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
   <header>
@@ -462,27 +460,8 @@
   </div>
 
   <script>
-    /*
-     * ── EmailJS Setup ──────────────────────────────────────────────────
-     * 1. Go to https://www.emailjs.com and create a free account.
-     * 2. Add an Email Service (Gmail, Outlook, etc.) → copy its Service ID.
-     * 3. Create an Email Template. In the template set:
-     *      To Email : info@cybersecgard.com
-     *      Subject  : Website Enquiry from {{from_name}}
-     *      Body     : Name: {{from_name}}\nEmail: {{from_email}}\n\nMessage:\n{{message}}
-     *    Copy the Template ID.
-     * 4. Go to Account → General → Public Key, copy it.
-     * 5. Replace the three placeholder strings below.
-     * ─────────────────────────────────────────────────────────────────── */
-    var EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'abc123XYZ'
-    var EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_xxxxxx'
-    var EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xxxxxx'
-
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
-    var form   = document.getElementById('contactForm');
-    var btn    = form.querySelector('.contact-submit');
-    var modal  = document.getElementById('confirmModal');
+    var form  = document.getElementById('contactForm');
+    var modal = document.getElementById('confirmModal');
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -493,27 +472,17 @@
 
       if (!name || !email || !message) return;
 
-      /* Disable button while sending */
-      btn.disabled = true;
-      btn.querySelector('span').textContent = 'Sending…';
+      var subject = encodeURIComponent('Website Enquiry from ' + name);
+      var body    = encodeURIComponent(
+        'Name: '    + name  + '\r\n' +
+        'Email: '   + email + '\r\n\r\n' +
+        'Message:\r\n' + message
+      );
 
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        from_name:  name,
-        from_email: email,
-        message:    message
-      })
-      .then(function () {
-        form.reset();
-        modal.classList.add('modal-visible');
-      })
-      .catch(function (err) {
-        console.error('EmailJS error:', err);
-        alert('Sorry, something went wrong. Please email us directly at info@cybersecgard.com');
-      })
-      .finally(function () {
-        btn.disabled = false;
-        btn.querySelector('span').textContent = 'Send Message';
-      });
+      window.location.href = 'mailto:info@cybersecgard.com?subject=' + subject + '&body=' + body;
+
+      form.reset();
+      modal.classList.add('modal-visible');
     });
 
     document.getElementById('modalOk').addEventListener('click', function () {
