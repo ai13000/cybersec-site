@@ -917,3 +917,213 @@ body {
   .contact-right { padding: 1.75rem 1.25rem; }
   .contact-left h2 { font-size: 1.7rem; }
 }
+
+/* ── About Page ── */
+.about-mission-section {
+  background: #ffffff;
+  padding: 80px 24px;
+}
+.about-mission-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-mission-text .section-tag { margin-bottom: 12px; display: block; }
+.about-mission-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 20px;
+  line-height: 1.25;
+}
+.about-mission-text p {
+  color: #475569;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.about-mission-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.about-stat {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+}
+.about-stat-number {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+}
+.about-stat-label {
+  font-size: 0.82rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Team Section */
+.about-team-section {
+  background: #f8fafc;
+  padding: 80px 24px;
+  border-top: 1px solid #e2e8f0;
+}
+.about-team-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 48px;
+}
+.team-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+.team-card:hover { box-shadow: 0 6px 24px rgba(30,58,138,0.1); }
+.team-photo {
+  position: relative;
+  background: #e2e8f0;
+  min-height: 300px;
+  overflow: hidden;
+}
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.team-photo-placeholder {
+  display: none;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3a8a 0%, #0a1628 100%);
+}
+.team-photo-placeholder svg {
+  width: 80px;
+  height: 80px;
+  color: #60a5fa;
+  opacity: 0.6;
+}
+.team-info {
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.team-info h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+.team-role {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3b82f6;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+.team-info p {
+  color: #475569;
+  line-height: 1.75;
+  margin-bottom: 20px;
+  font-size: 0.97rem;
+}
+.team-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.team-tags span {
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+/* Values Section */
+.about-values-section {
+  background: #ffffff;
+  padding: 80px 24px;
+  border-top: 1px solid #e2e8f0;
+}
+.about-values-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.value-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 32px 24px;
+}
+.value-icon {
+  width: 48px;
+  height: 48px;
+  background: #eff6ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #2563eb;
+}
+.value-icon svg { width: 24px; height: 24px; }
+.value-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+.value-card p {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* About responsive */
+@media (max-width: 900px) {
+  .about-mission-inner { grid-template-columns: 1fr; gap: 40px; }
+  .team-card { grid-template-columns: 1fr; }
+  .team-photo { min-height: 260px; }
+  .team-photo-placeholder { min-height: 260px; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .about-mission-stats { grid-template-columns: 1fr 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .team-info { padding: 24px 20px; }
+}
