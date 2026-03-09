@@ -3,12 +3,529 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CyberSec</title>
+  <title>SecureForge — DevSecOps & Application Security Consulting</title>
+  <meta name="description" content="SecureForge is an enterprise cybersecurity consulting firm in St. Louis specializing in DevSecOps integration, Application Security, and Threat Modeling for CISOs and security leaders." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Build here -->
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════ -->
+  <header class="nav-wrapper" id="nav" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="#home" class="nav-logo" aria-label="SecureForge home">
+        <svg class="logo-mark" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="#38BDF8" opacity="0.15" stroke="#38BDF8" stroke-width="1.5"/>
+          <polygon points="18,7 29,13 29,23 18,29 7,23 7,13" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
+          <path d="M18 12 L18 24 M13 15 L23 15 M13 20 L23 20" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Secure<span class="logo-accent">Forge</span></span>
+      </a>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li>
+          <a href="#contact" class="nav-cta" aria-label="Schedule a security assessment">
+            Schedule Assessment
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 1 — HERO
+    ═══════════════════════════════════════════════ -->
+    <section class="hero" id="home" aria-labelledby="hero-headline">
+      <div class="hero-bg" aria-hidden="true">
+        <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#38BDF8" stroke-width="0.4" opacity="0.25"/>
+            </pattern>
+            <radialGradient id="heroGlow" cx="30%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#0F172A" stop-opacity="1"/>
+            </radialGradient>
+          </defs>
+          <rect width="1440" height="900" fill="url(#heroGlow)"/>
+          <rect width="1440" height="900" fill="url(#grid)"/>
+          <!-- Geometric accent shapes -->
+          <polygon points="900,50 1100,150 1100,350 900,450 700,350 700,150" fill="none" stroke="#38BDF8" stroke-width="0.8" opacity="0.18"/>
+          <polygon points="950,100 1080,170 1080,310 950,380 820,310 820,170" fill="none" stroke="#38BDF8" stroke-width="0.5" opacity="0.12"/>
+          <polygon points="1000,150 1060,185 1060,255 1000,290 940,255 940,185" fill="#38BDF8" opacity="0.04"/>
+          <line x1="0" y1="500" x2="500" y2="200" stroke="#38BDF8" stroke-width="0.5" opacity="0.1"/>
+          <line x1="0" y1="600" x2="400" y2="300" stroke="#38BDF8" stroke-width="0.3" opacity="0.08"/>
+          <circle cx="1300" cy="750" r="180" fill="none" stroke="#38BDF8" stroke-width="0.5" opacity="0.1"/>
+          <circle cx="1300" cy="750" r="100" fill="none" stroke="#38BDF8" stroke-width="0.3" opacity="0.08"/>
+          <!-- Node dots -->
+          <circle cx="700" cy="150" r="3" fill="#38BDF8" opacity="0.5"/>
+          <circle cx="1100" cy="150" r="3" fill="#38BDF8" opacity="0.5"/>
+          <circle cx="1100" cy="350" r="3" fill="#38BDF8" opacity="0.5"/>
+          <circle cx="700" cy="350" r="3" fill="#38BDF8" opacity="0.5"/>
+          <circle cx="900" cy="50" r="4" fill="#38BDF8" opacity="0.7"/>
+          <circle cx="900" cy="450" r="4" fill="#38BDF8" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge" aria-label="St. Louis, USA">
+          <span class="badge-dot" aria-hidden="true"></span>
+          St. Louis, USA · Enterprise Security Consulting
+        </div>
+        <h1 class="hero-headline" id="hero-headline">
+          Forge<br/>
+          <span class="headline-accent">Unbreakable</span><br/>
+          Security.
+        </h1>
+        <p class="hero-sub">
+          DevSecOps integration and Application Security consulting for enterprises that can't afford to be wrong. Built for CISOs, AppSec leads, and DevSecOps teams.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Request a Risk Assessment</a>
+          <a href="#process" class="btn btn-ghost">View Methodology →</a>
+        </div>
+        <div class="hero-trust" aria-label="Trust indicators">
+          <span><strong>SOC 2</strong> Aligned</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span><strong>ISO 27001</strong> Practitioners</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span><strong>OSCP / CISSP</strong> Certified Team</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 2 — PROBLEM STATEMENT
+    ═══════════════════════════════════════════════ -->
+    <section class="problems" id="about" aria-labelledby="problems-headline">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">The Reality</div>
+        <h2 class="section-title" id="problems-headline">
+          Your adversaries work full-time.<br/>
+          <span class="title-muted">Most security programs don't.</span>
+        </h2>
+
+        <div class="problems-grid">
+          <article class="problem-card reveal" aria-labelledby="prob1-title">
+            <div class="problem-stat" aria-label="4.88 million dollars">
+              $4.88M
+            </div>
+            <h3 class="problem-title" id="prob1-title">Average Cost of a Data Breach</h3>
+            <p class="problem-body">
+              IBM 2024. Most breaches trace back to insecure code or misconfigured pipelines — problems that a mature AppSec program eliminates upstream.
+            </p>
+            <div class="problem-tag danger">FINANCIAL RISK</div>
+          </article>
+
+          <article class="problem-card reveal" aria-labelledby="prob2-title">
+            <div class="problem-stat">
+              83%
+            </div>
+            <h3 class="problem-title" id="prob2-title">of Orgs Have Unmitigated Critical Vulnerabilities</h3>
+            <p class="problem-body">
+              Veracode SOSS 2024. Security debt compounds faster than engineering teams can address it without a structured Secure SDLC.
+            </p>
+            <div class="problem-tag warn">COMPLIANCE RISK</div>
+          </article>
+
+          <article class="problem-card reveal" aria-labelledby="prob3-title">
+            <div class="problem-stat">
+              197
+            </div>
+            <h3 class="problem-title" id="prob3-title">Days Mean Dwell Time Before Detection</h3>
+            <p class="problem-body">
+              Adversaries move laterally for months before discovery. Continuous monitoring and threat modeling close this window before it becomes a headline.
+            </p>
+            <div class="problem-tag danger">OPERATIONAL RISK</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 3 — SERVICES
+    ═══════════════════════════════════════════════ -->
+    <section class="services" id="services" aria-labelledby="services-headline">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">What We Do</div>
+        <h2 class="section-title" id="services-headline">
+          Precision capabilities.<br/>
+          <span class="title-muted">Not commodity consulting.</span>
+        </h2>
+        <p class="section-sub">Four practice areas. Delivered by practitioners who've held the roles you're in — not theorists reading from a framework playbook.</p>
+
+        <div class="services-grid">
+
+          <article class="service-card reveal" tabindex="0" aria-labelledby="svc1-title">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect x="4" y="4" width="32" height="32" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M4 14h32M14 4v32M26 4v32" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+                <circle cx="20" cy="20" r="4" fill="currentColor" opacity="0.8"/>
+                <circle cx="9" cy="9" r="2" fill="currentColor" opacity="0.5"/>
+                <circle cx="31" cy="9" r="2" fill="currentColor" opacity="0.5"/>
+                <circle cx="9" cy="31" r="2" fill="currentColor" opacity="0.5"/>
+                <circle cx="31" cy="31" r="2" fill="currentColor" opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="service-role">For DevSecOps Teams</div>
+            <h3 class="service-title" id="svc1-title">DevSecOps Integration</h3>
+            <p class="service-desc">Security woven into your CI/CD fabric — not bolted on post-merge. We design and implement pipeline-native security that doesn't slow your teams.</p>
+            <ul class="service-list" aria-label="DevSecOps services">
+              <li>CI/CD Pipeline Security Hardening</li>
+              <li>Container & IaC Security Posture</li>
+              <li>Secrets Management Architecture</li>
+              <li>Security Champions Program Design</li>
+            </ul>
+            <a href="#contact" class="service-link" aria-label="Learn more about DevSecOps Integration">Learn More →</a>
+          </article>
+
+          <article class="service-card reveal" tabindex="0" aria-labelledby="svc2-title">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M20 4 L36 12 L36 22 C36 30 28 36 20 38 C12 36 4 30 4 22 L4 12 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M20 10 L30 15 L30 21 C30 26 25 30 20 32 C15 30 10 26 10 21 L10 15 Z" stroke="currentColor" stroke-width="1" opacity="0.5" fill="none"/>
+                <path d="M14 21 L18 25 L26 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="service-role">For AppSec Leads</div>
+            <h3 class="service-title" id="svc2-title">Application Security</h3>
+            <p class="service-desc">Comprehensive application security testing and program design — from SAST/DAST advisory to full-spectrum penetration testing across your attack surface.</p>
+            <ul class="service-list" aria-label="Application Security services">
+              <li>Penetration Testing (API, Web, Mobile)</li>
+              <li>SAST/DAST Pipeline Integration</li>
+              <li>Secure Code Review</li>
+              <li>Vulnerability Management Programs</li>
+            </ul>
+            <a href="#contact" class="service-link" aria-label="Learn more about Application Security">Learn More →</a>
+          </article>
+
+          <article class="service-card reveal" tabindex="0" aria-labelledby="svc3-title">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <polygon points="20,4 36,14 36,26 20,36 4,26 4,14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <polygon points="20,11 29,17 29,23 20,29 11,23 11,17" stroke="currentColor" stroke-width="1" opacity="0.5" fill="none"/>
+                <circle cx="20" cy="20" r="3" fill="currentColor"/>
+                <line x1="20" y1="4" x2="20" y2="11" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+                <line x1="36" y1="14" x2="29" y2="17" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+                <line x1="36" y1="26" x2="29" y2="23" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+                <line x1="20" y1="36" x2="20" y2="29" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+                <line x1="4" y1="26" x2="11" y2="23" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+                <line x1="4" y1="14" x2="11" y2="17" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+              </svg>
+            </div>
+            <div class="service-role">For CISOs</div>
+            <h3 class="service-title" id="svc3-title">Threat Modeling</h3>
+            <p class="service-desc">Structured adversarial analysis of your architecture and data flows using STRIDE and PASTA methodologies. Prioritized by exploitability, not theoretical severity.</p>
+            <ul class="service-list" aria-label="Threat Modeling services">
+              <li>STRIDE / PASTA Facilitation</li>
+              <li>Architecture Risk Analysis</li>
+              <li>Attack Tree Construction</li>
+              <li>Prioritized Remediation Roadmaps</li>
+            </ul>
+            <a href="#contact" class="service-link" aria-label="Learn more about Threat Modeling">Learn More →</a>
+          </article>
+
+          <article class="service-card reveal" tabindex="0" aria-labelledby="svc4-title">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect x="6" y="8" width="28" height="24" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M6 15h28" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                <circle cx="12" cy="11.5" r="1.5" fill="currentColor" opacity="0.5"/>
+                <circle cx="17" cy="11.5" r="1.5" fill="currentColor" opacity="0.3"/>
+                <circle cx="22" cy="11.5" r="1.5" fill="currentColor" opacity="0.3"/>
+                <path d="M13 22 L17 18 L21 22 L25 17 L29 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="10" y1="28" x2="30" y2="28" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+              </svg>
+            </div>
+            <div class="service-role">For Engineering Leaders</div>
+            <h3 class="service-title" id="svc4-title">Secure SDLC Design</h3>
+            <p class="service-desc">End-to-end secure software development lifecycle programs that embed security without creating friction — designed around your stack, your team, your release cadence.</p>
+            <ul class="service-list" aria-label="Secure SDLC services">
+              <li>SDLC Maturity Assessment (BSIMM/SAMM)</li>
+              <li>Security Gate Design</li>
+              <li>Developer Security Training</li>
+              <li>Board-Level Reporting Frameworks</li>
+            </ul>
+            <a href="#contact" class="service-link" aria-label="Learn more about Secure SDLC Design">Learn More →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 4 — WHY US / DIFFERENTIATORS
+    ═══════════════════════════════════════════════ -->
+    <section class="whyus" id="why-us" aria-labelledby="whyus-headline">
+      <div class="container">
+        <div class="whyus-grid">
+          <div class="whyus-left reveal">
+            <div class="section-label light" aria-hidden="true">Why SecureForge</div>
+            <blockquote class="whyus-quote">
+              <p>"We've been on both sides — as operators inside the breach, and as advisors preventing the next one."</p>
+            </blockquote>
+            <p class="whyus-tagline">
+              That's not a marketing line. It's the lens through which every engagement runs.
+            </p>
+          </div>
+          <div class="whyus-right">
+            <div class="diff-item reveal" aria-labelledby="diff1-title">
+              <div class="diff-number" aria-hidden="true">01</div>
+              <div class="diff-content">
+                <h3 class="diff-title" id="diff1-title">Practitioner-led, not analyst-written</h3>
+                <p>Every engagement is led by engineers who've built, broken, and secured production systems. Not consultants who've read about it.</p>
+              </div>
+            </div>
+            <div class="diff-item reveal" aria-labelledby="diff2-title">
+              <div class="diff-number" aria-hidden="true">02</div>
+              <div class="diff-content">
+                <h3 class="diff-title" id="diff2-title">Embedded, not parachuted</h3>
+                <p>We work inside your tools — Jira, GitHub, Slack, your SIEM. No 300-page PDF reports that gather dust. Actionable findings integrated into your workflow.</p>
+              </div>
+            </div>
+            <div class="diff-item reveal" aria-labelledby="diff3-title">
+              <div class="diff-number" aria-hidden="true">03</div>
+              <div class="diff-content">
+                <h3 class="diff-title" id="diff3-title">Zero material breaches — 36 consecutive months</h3>
+                <p>Across our monitored client base. We track this metric because we believe security firms should be accountable for outcomes, not just deliverables.</p>
+              </div>
+            </div>
+            <div class="diff-item reveal" aria-labelledby="diff4-title">
+              <div class="diff-number" aria-hidden="true">04</div>
+              <div class="diff-content">
+                <h3 class="diff-title" id="diff4-title">OSCP / CISSP / CEH certified team</h3>
+                <p>Credentials that demand hands-on technical proficiency — not just multiple-choice exams. Our team maintains active certifications and ongoing research.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 5 — PROCESS / HOW WE WORK
+    ═══════════════════════════════════════════════ -->
+    <section class="process" id="process" aria-labelledby="process-headline">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Our Methodology</div>
+        <h2 class="section-title" id="process-headline">
+          A process built on<br/>
+          <span class="title-muted">adversarial thinking.</span>
+        </h2>
+
+        <div class="process-timeline" role="list" aria-label="Engagement phases">
+          <div class="process-step reveal" role="listitem" aria-labelledby="step1-title">
+            <div class="step-number" aria-hidden="true">01</div>
+            <div class="step-body">
+              <h3 class="step-title" id="step1-title">Reconnaissance Mapping</h3>
+              <p class="step-desc">We map your external attack surface before adversaries do — domains, exposed services, credential leaks, supplier risk.</p>
+            </div>
+          </div>
+          <div class="process-connector" aria-hidden="true"><span></span></div>
+          <div class="process-step reveal" role="listitem" aria-labelledby="step2-title">
+            <div class="step-number" aria-hidden="true">02</div>
+            <div class="step-body">
+              <h3 class="step-title" id="step2-title">Attack Surface Analysis</h3>
+              <p class="step-desc">Deep technical enumeration of your application portfolio, infrastructure, and data flows. Every trust boundary documented.</p>
+            </div>
+          </div>
+          <div class="process-connector" aria-hidden="true"><span></span></div>
+          <div class="process-step reveal" role="listitem" aria-labelledby="step3-title">
+            <div class="step-number" aria-hidden="true">03</div>
+            <div class="step-body">
+              <h3 class="step-title" id="step3-title">Threat Modeling</h3>
+              <p class="step-desc">Structured adversarial analysis using STRIDE and PASTA. Risk-ranked findings tied to business impact, not CVSS scores in isolation.</p>
+            </div>
+          </div>
+          <div class="process-connector" aria-hidden="true"><span></span></div>
+          <div class="process-step reveal" role="listitem" aria-labelledby="step4-title">
+            <div class="step-number" aria-hidden="true">04</div>
+            <div class="step-body">
+              <h3 class="step-title" id="step4-title">Remediation Architecture</h3>
+              <p class="step-desc">We don't just hand you a list. We design the fixes — security controls, code-level guidance, infrastructure changes — integrated into your sprint cycles.</p>
+            </div>
+          </div>
+          <div class="process-connector" aria-hidden="true"><span></span></div>
+          <div class="process-step reveal" role="listitem" aria-labelledby="step5-title">
+            <div class="step-number" aria-hidden="true">05</div>
+            <div class="step-body">
+              <h3 class="step-title" id="step5-title">Continuous Monitoring</h3>
+              <p class="step-desc">Security is not a project. We establish detection pipelines, alerting logic, and quarterly review cadences — so you see threats before they escalate.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 6 — SOCIAL PROOF
+    ═══════════════════════════════════════════════ -->
+    <section class="proof" id="proof" aria-labelledby="proof-headline">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Client Outcomes</div>
+        <h2 class="section-title" id="proof-headline">
+          Trusted by security leaders<br/>
+          <span class="title-muted">who can't afford a second chance.</span>
+        </h2>
+
+        <div class="testimonials-grid">
+          <figure class="testimonial-card testimonial-card--offset reveal" aria-labelledby="t1-attr">
+            <blockquote>
+              <p>"SecureForge didn't deliver a report — they delivered a program. Three months after engagement, our AppSec pipeline catches what used to reach production. That's measurable."</p>
+            </blockquote>
+            <figcaption id="t1-attr">
+              <strong>VP of Engineering</strong>
+              <span>Enterprise FinTech, Series D</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card reveal" aria-labelledby="t2-attr">
+            <blockquote>
+              <p>"I've worked with three other security consultancies. SecureForge is the first team I'd put in front of my board and feel confident. Their threat modeling output was the most technically credible I've seen."</p>
+            </blockquote>
+            <figcaption id="t2-attr">
+              <strong>CISO</strong>
+              <span>Regional Healthcare Network, 8,000+ employees</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card testimonial-card--low reveal" aria-labelledby="t3-attr">
+            <blockquote>
+              <p>"They understand what it means to ship fast and stay secure. Our DevSecOps pipeline went from a friction point to a competitive advantage. I didn't think that was possible."</p>
+            </blockquote>
+            <figcaption id="t3-attr">
+              <strong>Head of DevSecOps</strong>
+              <span>B2B SaaS Platform, 500+ engineers</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="logos-row reveal" aria-label="Industries served">
+          <div class="logos-label">Industries served</div>
+          <div class="logos-strip" role="list">
+            <div class="logo-pill" role="listitem">Financial Services</div>
+            <div class="logo-pill" role="listitem">Healthcare & Life Sciences</div>
+            <div class="logo-pill" role="listitem">B2B SaaS</div>
+            <div class="logo-pill" role="listitem">Defense Contractors</div>
+            <div class="logo-pill" role="listitem">Critical Infrastructure</div>
+            <div class="logo-pill" role="listitem">Government &amp; Public Sector</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 7 — CTA BANNER
+    ═══════════════════════════════════════════════ -->
+    <section class="cta-banner" id="contact" aria-labelledby="cta-headline">
+      <div class="cta-pattern" aria-hidden="true">
+        <svg width="100%" height="100%" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="iso" width="80" height="46" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 80 23 L 40 46 L 0 23 Z" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.06"/>
+            </pattern>
+          </defs>
+          <rect width="800" height="400" fill="url(#iso)"/>
+        </svg>
+      </div>
+      <div class="cta-content reveal">
+        <div class="cta-label" aria-hidden="true">Ready to Engage</div>
+        <h2 class="cta-headline" id="cta-headline">
+          Is your security posture ready for a sophisticated adversary?
+        </h2>
+        <p class="cta-sub">
+          Most organizations discover gaps only after an incident. Our assessments find what your adversaries are looking for — before they do.
+        </p>
+        <div class="cta-actions">
+          <a href="mailto:engage@secureforge.com" class="btn btn-cta-primary">Schedule a Confidential Assessment</a>
+          <a href="tel:+13145550199" class="btn btn-cta-ghost">+1 (314) 555-0199</a>
+        </div>
+        <p class="cta-note">All engagements are covered by a mutual NDA. Findings remain confidential.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo footer-logo" aria-label="SecureForge home">
+            <svg class="logo-mark" width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="#38BDF8" opacity="0.15" stroke="#38BDF8" stroke-width="1.5"/>
+              <polygon points="18,7 29,13 29,23 18,29 7,23 7,13" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
+              <path d="M18 12 L18 24 M13 15 L23 15 M13 20 L23 20" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <span class="logo-text">Secure<span class="logo-accent">Forge</span></span>
+          </a>
+          <p class="footer-tagline">Enterprise DevSecOps and Application Security consulting. St. Louis, USA.</p>
+          <div class="footer-social" aria-label="Social links">
+            <a href="#" class="footer-social-link">LinkedIn</a>
+            <a href="#" class="footer-social-link">GitHub</a>
+            <a href="#" class="footer-social-link">Research Blog</a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-labelledby="footer-services-label">
+          <h4 class="footer-nav-title" id="footer-services-label">Services</h4>
+          <ul role="list">
+            <li><a href="#services">DevSecOps Integration</a></li>
+            <li><a href="#services">Application Security</a></li>
+            <li><a href="#services">Threat Modeling</a></li>
+            <li><a href="#services">Secure SDLC Design</a></li>
+            <li><a href="#services">Penetration Testing</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-labelledby="footer-company-label">
+          <h4 class="footer-nav-title" id="footer-company-label">Company</h4>
+          <ul role="list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#why-us">Why SecureForge</a></li>
+            <li><a href="#process">Methodology</a></li>
+            <li><a href="#proof">Client Results</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact" id="footer-contact-label">
+          <h4 class="footer-nav-title">Contact</h4>
+          <address>
+            <p><a href="mailto:engage@secureforge.com">engage@secureforge.com</a></p>
+            <p><a href="tel:+13145550199">+1 (314) 555-0199</a></p>
+            <p>St. Louis, MO 63101<br/>United States</p>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 SecureForge LLC. All rights reserved.</p>
+        <div class="footer-badges" aria-label="Certifications">
+          <span class="cert-badge">SOC 2 Aligned</span>
+          <span class="cert-badge">ISO 27001</span>
+          <span class="cert-badge">OSCP Certified Team</span>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
