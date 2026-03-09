@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Discovery Call — CyberSec Gard</title>
+  <meta name="description" content="Book a free 30–45 minute DevSecOps discovery call with CyberSec Gard. Walk away with clarity, actionable insights, and a confident path forward." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Page Hero ─────────────────────────────────────────── */
+    .dc-hero {
+      background: var(--navy-dark);
+      padding: clamp(80px, 12vh, 140px) 0 clamp(60px, 9vh, 110px);
+      position: relative;
+      overflow: hidden;
+    }
+    .dc-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(64,104,216,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .dc-hero .container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .dc-hero-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .dc-hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(32px, 4.5vw, 62px);
+      line-height: 1.04;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+    .dc-hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .dc-hero-sub {
+      font-size: clamp(15px, 1.4vw, 17px);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+
+    /* Right panel — bullet points */
+    .dc-hero-panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 2px;
+      padding: 40px 40px 44px;
+    }
+    .dc-hero-panel-title {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 28px;
+    }
+    .dc-bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    .dc-bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.55;
+    }
+    .dc-bullet-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* ── Intro section ─────────────────────────────────────── */
+    .dc-intro {
+      background: var(--white);
+      padding: clamp(56px, 8vh, 96px) 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .dc-intro .container {
+      max-width: 760px;
+    }
+    .dc-intro-text {
+      font-size: clamp(16px, 1.5vw, 18px);
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .dc-intro-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── What to Expect ────────────────────────────────────── */
+    .dc-expect {
+      background: var(--off-white);
+      padding: clamp(56px, 8vh, 96px) 0;
+    }
+    .dc-expect-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .dc-expect-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-top: 4px solid var(--navy);
+      padding: 36px 32px 40px;
+      transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+    }
+    .dc-expect-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+      border-top-color: var(--accent);
+    }
+    .dc-expect-num {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .dc-expect-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .dc-expect-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Why Book ──────────────────────────────────────────── */
+    .dc-why {
+      background: var(--white);
+      padding: clamp(56px, 8vh, 96px) 0;
+    }
+    .dc-why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    .dc-why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .dc-why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .dc-why-list li::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: var(--navy);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* Key Takeaway callout */
+    .dc-takeaway {
+      background: var(--navy-dark);
+      border-left: 4px solid var(--accent);
+      padding: 32px 36px;
+      border-radius: 2px;
+    }
+    .dc-takeaway-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .dc-takeaway-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+    }
+
+    /* ── Closing CTA ───────────────────────────────────────── */
+    .dc-cta {
+      background: var(--navy-dark);
+      padding: clamp(64px, 10vh, 110px) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .dc-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(64,104,216,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .dc-cta .container {
+      position: relative;
+      z-index: 1;
+    }
+    .dc-cta-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(26px, 3.5vw, 48px);
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    .dc-cta-sub {
+      font-size: clamp(15px, 1.4vw, 17px);
+      color: rgba(255,255,255,0.55);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .dc-hero .container { grid-template-columns: 1fr; gap: 40px; }
+      .dc-expect-grid { grid-template-columns: 1fr; }
+      .dc-why-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 600px) {
+      .dc-hero-panel { padding: 28px 24px 32px; }
+      .dc-takeaway { padding: 24px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="nav-wrapper" id="nav" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="CyberSec Gard home">
+        <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="72" height="72" />
+        <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+      </a>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#services" class="nav-link active">Services</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <a href="index.html#contact" class="nav-cta" aria-label="Schedule a consultation">Schedule a Call</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="dc-hero" aria-labelledby="dc-hero-title">
+      <div class="container">
+
+        <div class="dc-hero-left">
+          <p class="dc-hero-label">No Commitment Required</p>
+          <h1 class="dc-hero-title" id="dc-hero-title">Free<br/><em>Discovery</em><br/>Call</h1>
+          <p class="dc-hero-sub">
+            Our DevSecOps discovery call is your opportunity to understand where you
+            stand today and what it will take to strengthen your security posture.
+          </p>
+          <a href="#schedule" class="btn btn-primary">Schedule Your Discovery Call</a>
+        </div>
+
+        <div class="dc-hero-panel" aria-label="What you get">
+          <p class="dc-hero-panel-title">What you get</p>
+          <ul class="dc-bullet-list">
+            <li>30–45 minute session to align on challenges and expectations.</li>
+            <li>Get tailored recommendations that fit your team and goals.</li>
+            <li>Walk away with clarity, actionable insights, and a confident path forward.</li>
+          </ul>
+          <a href="#schedule" class="btn btn-ghost" style="width:100%;justify-content:center;">Book Your Free Call</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="dc-intro" aria-label="About the discovery call">
+      <div class="container">
+        <p class="dc-intro-text">
+          In just <strong>30–45 minutes</strong>, we'll listen to your challenges, answer your questions,
+          and provide clear guidance on how DevSecOps practices can support your mission.
+          This isn't a sales call — it's a working session designed to give you
+          <strong>real value before any engagement begins</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHAT TO EXPECT -->
+    <section class="dc-expect" aria-labelledby="dc-expect-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">The Session</div>
+        <h2 class="section-title" id="dc-expect-title">
+          What to Expect<br/>
+          <span class="title-muted">During this session, we cover:</span>
+        </h2>
+
+        <div class="dc-expect-grid">
+
+          <div class="dc-expect-card">
+            <div class="dc-expect-num">01</div>
+            <h3 class="dc-expect-title">Current State Review</h3>
+            <p class="dc-expect-desc">
+              We discuss your development, operations, and security setup to better
+              understand your environment and the challenges your team faces day to day.
+            </p>
+          </div>
+
+          <div class="dc-expect-card">
+            <div class="dc-expect-num">02</div>
+            <h3 class="dc-expect-title">Key Risk Areas</h3>
+            <p class="dc-expect-desc">
+              We highlight common gaps such as code analysis, dependency management,
+              secrets handling, and pipeline security — and how they apply to your context.
+            </p>
+          </div>
+
+          <div class="dc-expect-card">
+            <div class="dc-expect-num">03</div>
+            <h3 class="dc-expect-title">Next Step Recommendations</h3>
+            <p class="dc-expect-desc">
+              We outline strategic options to help you prioritize improvements and move
+              toward a secure CI/CD pipeline with a clear, achievable roadmap.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY BOOK -->
+    <section class="dc-why" aria-labelledby="dc-why-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Why Book</div>
+        <h2 class="section-title" id="dc-why-title">
+          Many organizations want to adopt DevSecOps.<br/>
+          <span class="title-muted">But aren't sure where to begin.</span>
+        </h2>
+
+        <div class="dc-why-inner">
+
+          <ul class="dc-why-list" aria-label="Reasons to book">
+            <li>Identify the highest-value areas to focus on first.</li>
+            <li>Get clear, jargon-free answers about DevSecOps practices.</li>
+            <li>See how a tailored approach could work for your team.</li>
+          </ul>
+
+          <div class="dc-takeaway" aria-label="Key takeaway">
+            <p class="dc-takeaway-label">Key Takeaway</p>
+            <p class="dc-takeaway-text">
+              By the end of the call, you'll have a clearer picture of your DevSecOps
+              maturity, actionable recommendations, and confidence in your next steps.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="dc-cta" id="schedule" aria-labelledby="dc-cta-title">
+      <div class="container">
+        <h2 class="dc-cta-title" id="dc-cta-title">Ready to Explore?</h2>
+        <p class="dc-cta-sub">
+          Book your free discovery call today and start building the foundation
+          for a stronger, safer software delivery pipeline.
+        </p>
+        <a href="index.html#contact" class="btn btn-primary">Schedule Your Discovery Call</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo footer-logo" aria-label="CyberSec Gard home">
+            <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="40" height="40" />
+            <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+          </a>
+          <p class="footer-tagline">Enterprise DevSecOps and Application Security consulting. St. Louis, USA.</p>
+          <div class="footer-social" aria-label="Social links">
+            <a href="#" class="footer-social-link">LinkedIn</a>
+            <a href="#" class="footer-social-link">GitHub</a>
+            <a href="#" class="footer-social-link">Research Blog</a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-labelledby="footer-services-label">
+          <h4 class="footer-nav-title" id="footer-services-label">Services</h4>
+          <ul role="list">
+            <li><a href="discovery-call.html">Free Discovery Call</a></li>
+            <li><a href="index.html#services">DevSecOps Maturity Assessment</a></li>
+            <li><a href="index.html#services">CI/CD Pipeline Security</a></li>
+            <li><a href="index.html#services">DevSecOps Training</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-labelledby="footer-company-label">
+          <h4 class="footer-nav-title" id="footer-company-label">Company</h4>
+          <ul role="list">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#why-us">Why SecureForge</a></li>
+            <li><a href="index.html#process">Methodology</a></li>
+            <li><a href="index.html#proof">Client Results</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact" id="footer-contact-label">
+          <h4 class="footer-nav-title">Contact</h4>
+          <address>
+            <p><a href="mailto:engage@secureforge.com">engage@secureforge.com</a></p>
+            <p><a href="tel:+13145550199">+1 (314) 555-0199</a></p>
+            <p>St. Louis, MO 63101<br/>United States</p>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 CyberSec Gard LLC. All rights reserved.</p>
+        <div class="footer-badges" aria-label="Certifications">
+          <span class="cert-badge">SOC 2 Aligned</span>
+          <span class="cert-badge">ISO 27001</span>
+          <span class="cert-badge">OSCP Certified Team</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
