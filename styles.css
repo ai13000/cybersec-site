@@ -8,9 +8,9 @@
   --navy:        #1E3A8A;
   --navy-dark:   #0F172A;
   --navy-light:  #2548A8;
-  --accent:      #38BDF8;
-  --accent-dark: #0EA5E9;
-  --nav-accent:  #F0A500;
+  --accent:      #0D9488;
+  --accent-dark: #0F766E;
+  --nav-accent:  #2DD4BF;
   --white:       #FFFFFF;
   --off-white:   #F8FAFC;
   --gray-100:    #F1F5F9;
@@ -74,7 +74,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   color: var(--accent);
   margin-bottom: 16px;
 }
-.section-label.light { color: rgba(56,189,248,0.7); }
+.section-label.light { color: rgba(45,212,191,0.8); }
 
 .section-title {
   font-family: var(--font-head);
@@ -125,16 +125,16 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 
 .btn-primary {
   background: var(--accent);
-  color: var(--navy-dark);
+  color: var(--white);
   border: 2px solid var(--accent);
   border-radius: 0;
 }
 .btn-primary:hover {
-  background: var(--white);
-  color: var(--navy);
-  border-color: var(--white);
+  background: var(--accent-dark);
+  color: var(--white);
+  border-color: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(56,189,248,0.3);
+  box-shadow: 0 8px 24px rgba(13,148,136,0.32);
 }
 
 .btn-ghost {
@@ -151,7 +151,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 
 .btn-cta-primary {
   background: var(--accent);
-  color: var(--navy-dark);
+  color: var(--white);
   border: 2px solid var(--accent);
   border-radius: 0;
   font-size: 15px;
@@ -298,9 +298,9 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   white-space: nowrap;
 }
 .nav-cta:hover {
-  background: #FFBE30;
+  background: #3DDECB;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(240,165,0,0.35);
+  box-shadow: 0 4px 14px rgba(45,212,191,0.35);
 }
 
 
@@ -382,7 +382,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--nav-accent);
+  color: var(--accent);
   margin-bottom: 18px;
 }
 .hero-eyebrow::before {
@@ -390,7 +390,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   display: inline-block;
   width: 24px;
   height: 2px;
-  background: var(--nav-accent);
+  background: var(--accent);
   flex-shrink: 0;
 }
 
