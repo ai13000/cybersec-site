@@ -341,7 +341,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 20px;
   display: block;
 }
 .hero-overlay {
@@ -403,14 +403,14 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 .hero-headline {
   font-family: var(--font-head);
   font-weight: 900;
-  font-size: clamp(40px, 6.8vw, 92px);
-  line-height: 0.98;
+  font-size: clamp(28px, 3.8vw, 54px);
+  line-height: 1.04;
   color: var(--white);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   width: 100%;
-  max-width: 540px;
+  max-width: 480px;
 }
 .hero-headline em {
   font-style: italic;
@@ -437,21 +437,6 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   flex-wrap: wrap;
   width: 100%;
   max-width: 500px;
-}
-
-.hero-index {
-  position: absolute;
-  left: clamp(40px, 5.5vw, 80px);
-  bottom: clamp(60px, 8vh, 100px);
-  font-family: var(--font-head);
-  font-weight: 900;
-  font-size: clamp(120px, 18vw, 220px);
-  color: rgba(255, 255, 255, 0.035);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  user-select: none;
-  pointer-events: none;
-  z-index: 0;
 }
 
 
@@ -1196,7 +1181,6 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   }
 
   .hero-content  { min-height: auto; align-items: flex-start; }
-  .hero-index    { display: none; }
 
   .problems-grid { grid-template-columns: 1fr; }
   .problems-grid .problem-card:last-child {
@@ -1221,7 +1205,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 }
 
 @media (max-width: 480px) {
-  .hero-headline { font-size: clamp(36px, 11vw, 60px); }
+  .hero-headline { font-size: clamp(24px, 8vw, 44px); }
   .btn { padding: 12px 22px; font-size: 13px; }
   .btn-cta-primary,
   .btn-cta-ghost { font-size: 13px; padding: 15px 24px; }
