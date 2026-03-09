@@ -291,17 +291,17 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: var(--nav-accent);
-  color: var(--navy-dark);
+  background: #254BB9;
+  color: var(--white);
   padding: 9px 20px;
   flex-shrink: 0;
   transition: background 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
   white-space: nowrap;
 }
 .nav-cta:hover {
-  background: #8EAFED;
+  background: #1E3FA8;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(64,104,216,0.35);
+  box-shadow: 0 4px 14px rgba(37,75,185,0.40);
 }
 
 
