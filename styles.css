@@ -377,30 +377,8 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   align-items: flex-end;
 }
 
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-head);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.42);
-  margin-bottom: auto;
-  width: 100%;
-  max-width: 500px;
-}
-.hero-eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 1.5px;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-
 .hero-headline {
+  margin-top: auto;
   font-family: var(--font-head);
   font-weight: 900;
   font-size: clamp(28px, 3.8vw, 54px);
