@@ -10,6 +10,7 @@
   --navy-light:  #2548A8;
   --accent:      #38BDF8;
   --accent-dark: #0EA5E9;
+  --nav-accent:  #F0A500;
   --white:       #FFFFFF;
   --off-white:   #F8FAFC;
   --gray-100:    #F1F5F9;
@@ -202,7 +203,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   max-width: var(--container);
   margin-inline: auto;
   padding: 0 clamp(20px, 5vw, 60px);
-  height: 70px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -224,7 +225,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 .logo-text {
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 34px;
   color: var(--white);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -261,7 +262,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   transform: translateX(-50%) scaleX(0);
   width: 70%;
   height: 1.5px;
-  background: var(--accent);
+  background: var(--nav-accent);
   transition: transform 0.25s var(--ease-out);
 }
 .nav-link:hover { color: var(--white); }
@@ -295,8 +296,9 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   overflow: hidden;
-  padding-top: 70px;
+  padding-top: 110px;
 }
 
 .hero-bg {
@@ -315,43 +317,40 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to right,
-    rgba(15, 23, 42, 0.72) 0%,
-    rgba(15, 23, 42, 0.45) 60%,
-    rgba(15, 23, 42, 0.15) 100%
+    to left,
+    rgba(248, 250, 252, 0.88) 0%,
+    rgba(248, 250, 252, 0.72) 45%,
+    rgba(248, 250, 252, 0.0)  65%
   );
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: var(--container);
-  margin-inline: auto;
-  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 60px);
-  max-width: 800px;
-  padding-right: clamp(20px, 5vw, 60px);
+  width: 48%;
+  padding: clamp(40px, 6vh, 80px) clamp(32px, 5vw, 80px) clamp(40px, 6vh, 80px) 24px;
 }
 
 
 .hero-headline {
   font-family: var(--font-head);
   font-weight: 900;
-  font-size: clamp(36px, 5.5vw, 72px);
+  font-size: clamp(28px, 4vw, 58px);
   line-height: 1.08;
-  color: var(--white);
-  margin-bottom: 22px;
+  color: var(--navy-dark);
+  margin-bottom: 18px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .hero-sub {
   font-family: var(--font-head);
-  font-size: clamp(16px, 2vw, 22px);
-  color: rgba(255,255,255,0.82);
-  max-width: 560px;
+  font-size: clamp(15px, 1.6vw, 20px);
+  color: var(--text-muted);
+  max-width: 480px;
   margin-bottom: 0;
   line-height: 1.5;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
 
@@ -1063,7 +1062,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 110px;
     left: 0;
     right: 0;
     background: var(--navy-dark);
