@@ -8,9 +8,9 @@
   --navy:        #1E3A8A;
   --navy-dark:   #0F172A;
   --navy-light:  #2548A8;
-  --accent:      #0D9488;
-  --accent-dark: #0F766E;
-  --nav-accent:  #2DD4BF;
+  --accent:      #7C3AED;
+  --accent-dark: #6D28D9;
+  --nav-accent:  #A78BFA;
   --white:       #FFFFFF;
   --off-white:   #F8FAFC;
   --gray-100:    #F1F5F9;
@@ -74,7 +74,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   color: var(--accent);
   margin-bottom: 16px;
 }
-.section-label.light { color: rgba(45,212,191,0.8); }
+.section-label.light { color: rgba(167,139,250,0.85); }
 
 .section-title {
   font-family: var(--font-head);
@@ -134,7 +134,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   color: var(--white);
   border-color: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(13,148,136,0.32);
+  box-shadow: 0 8px 24px rgba(124,58,237,0.32);
 }
 
 .btn-ghost {
@@ -298,9 +298,9 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   white-space: nowrap;
 }
 .nav-cta:hover {
-  background: #3DDECB;
+  background: #B8A0FA;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(45,212,191,0.35);
+  box-shadow: 0 4px 14px rgba(124,58,237,0.35);
 }
 
 
