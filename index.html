@@ -121,20 +121,24 @@
 
     /* ── Methodology Pillars ─────────────────────────────────── */
     .pillars {
-      background: var(--navy);
+      background: #0F172A;
       padding: clamp(64px, 9vh, 100px) 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
     }
     .pillars-header {
       text-align: center;
       margin-bottom: 56px;
     }
-    .pillars-header .section-label {
-      justify-content: center;
+    .pillars-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6B9AFF;
       margin-bottom: 16px;
     }
     .pillars-headline {
-      font-family: var(--font-head);
+      font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       font-size: clamp(22px, 2.5vw, 34px);
       color: #ffffff;
@@ -144,54 +148,47 @@
     }
     .pillars-headline em {
       font-style: italic;
-      color: var(--accent);
+      color: #6B9AFF;
     }
     .pillars-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 24px;
     }
     .pillar-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
+      background: #1E293B;
+      border-top: 3px solid #4068D8;
       padding: 40px 36px;
-      position: relative;
       transition: background 0.2s;
     }
     .pillar-card:hover {
-      background: rgba(255,255,255,0.055);
+      background: #243347;
     }
     .pillar-number {
-      font-family: var(--font-head);
+      font-family: 'Montserrat', sans-serif;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.2em;
-      color: var(--accent);
+      color: #6B9AFF;
       margin-bottom: 20px;
     }
     .pillar-title {
-      font-family: var(--font-head);
+      font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: clamp(16px, 1.6vw, 20px);
+      font-size: clamp(15px, 1.5vw, 19px);
       color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 0.01em;
-      line-height: 1.2;
+      line-height: 1.25;
       margin-bottom: 16px;
     }
     .pillar-body {
-      font-size: clamp(14px, 1.2vw, 15px);
-      color: rgba(255,255,255,0.65);
+      font-size: 15px;
+      color: #94A3B8;
       line-height: 1.75;
     }
-    .pillar-bar {
-      width: 32px;
-      height: 3px;
-      background: var(--accent);
-      margin-bottom: 24px;
-    }
     @media (max-width: 768px) {
-      .pillars-grid { grid-template-columns: 1fr; gap: 2px; }
+      .pillars-grid { grid-template-columns: 1fr; gap: 16px; }
       .pillar-card { padding: 32px 28px; }
     }
   </style>
@@ -591,7 +588,7 @@
     <section class="pillars" aria-labelledby="pillars-headline">
       <div class="container">
         <div class="pillars-header">
-          <div class="section-label" aria-hidden="true">How We Think</div>
+          <div class="pillars-eyebrow">How We Think</div>
           <h2 class="pillars-headline" id="pillars-headline">
             Three pillars behind<br/><em>every engagement</em>
           </h2>
@@ -600,21 +597,18 @@
 
           <div class="pillar-card">
             <div class="pillar-number">01</div>
-            <div class="pillar-bar" aria-hidden="true"></div>
             <h3 class="pillar-title">Client-Centric Thinking</h3>
             <p class="pillar-body">Your mission becomes our mission. We ensure all solutions are crafted to advance what matters most to you.</p>
           </div>
 
           <div class="pillar-card">
             <div class="pillar-number">02</div>
-            <div class="pillar-bar" aria-hidden="true"></div>
             <h3 class="pillar-title">Tailored Solutions, Not Templates</h3>
             <p class="pillar-body">Everything we build is custom-fit to your tech, your team, your trajectory.</p>
           </div>
 
           <div class="pillar-card">
             <div class="pillar-number">03</div>
-            <div class="pillar-bar" aria-hidden="true"></div>
             <h3 class="pillar-title">Results-Driven Mindset</h3>
             <p class="pillar-body">We focus on measurable outcomes — not vanity metrics or vague deliverables.</p>
           </div>
