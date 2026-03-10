@@ -21,19 +21,16 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 55% 70% at 100% 50%, rgba(64,104,216,0.15) 0%, transparent 65%);
+      background: radial-gradient(ellipse 55% 70% at 100% 50%, rgba(64,104,216,0.18) 0%, transparent 65%);
       pointer-events: none;
     }
     .spotlight-inner {
       display: grid;
-      grid-template-columns: 380px 1fr;
+      grid-template-columns: 340px 1fr;
       gap: 72px;
-      align-items: center;
+      align-items: start;
       position: relative;
       z-index: 1;
-    }
-    .spotlight-photo {
-      position: relative;
     }
     .spotlight-photo img {
       width: 100%;
@@ -45,15 +42,14 @@
     }
     .spotlight-photo-caption {
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
       padding: 16px 20px;
-      margin-top: 0;
     }
     .spotlight-photo-name {
       font-family: var(--font-head);
       font-weight: 700;
       font-size: 15px;
-      color: var(--white);
+      color: #ffffff;
       line-height: 1.3;
     }
     .spotlight-photo-role {
@@ -65,15 +61,24 @@
       color: var(--accent);
       margin-top: 4px;
     }
-    .spotlight-content .section-label {
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 20px;
+    .spotlight-content {
+      opacity: 1;
+      transform: none;
+    }
+    .spotlight-eyebrow {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
     }
     .spotlight-headline {
       font-family: var(--font-head);
       font-weight: 900;
       font-size: clamp(26px, 3vw, 42px);
-      color: var(--white);
+      color: #ffffff;
       text-transform: uppercase;
       letter-spacing: -0.01em;
       line-height: 1.1;
@@ -85,29 +90,29 @@
     }
     .spotlight-contrast {
       font-size: clamp(14px, 1.3vw, 16px);
-      color: rgba(255,255,255,0.45);
-      line-height: 1.75;
-      margin-bottom: 20px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      margin-bottom: 24px;
       padding-left: 16px;
-      border-left: 2px solid rgba(255,255,255,0.12);
+      border-left: 2px solid rgba(255,255,255,0.2);
     }
     .spotlight-divider {
       width: 40px;
-      height: 2px;
+      height: 3px;
       background: var(--accent);
       margin: 28px 0;
     }
     .spotlight-message {
       font-size: clamp(15px, 1.4vw, 17px);
-      color: rgba(255,255,255,0.85);
+      color: rgba(255,255,255,0.9);
       line-height: 1.8;
       margin-bottom: 16px;
     }
     .spotlight-message strong {
-      color: var(--white);
+      color: #ffffff;
     }
     @media (max-width: 1024px) {
-      .spotlight-inner { grid-template-columns: 280px 1fr; gap: 48px; }
+      .spotlight-inner { grid-template-columns: 260px 1fr; gap: 48px; }
     }
     @media (max-width: 768px) {
       .spotlight-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -480,16 +485,13 @@
             </div>
           </div>
 
-          <div class="spotlight-content reveal">
-            <div class="section-label">Leadership Spotlight: Co-Founder Edward J. Liebig</div>
+          <div class="spotlight-content">
+            <div class="spotlight-eyebrow">Leadership Spotlight &mdash; Co-Founder Edward J. Liebig</div>
             <h2 class="spotlight-headline" id="spotlight-headline">
               We're not like most<br/><em>cybersecurity</em><br/>consulting companies.
             </h2>
             <p class="spotlight-contrast">
-              They bury you in generic paperwork, pitch canned solutions, burn hours
-              in meetings that go nowhere — and leave you with a bill and a stack of
-              PDFs that never actually solve the problem. No real change. No real
-              security. Just fluff.
+              They bury you in generic paperwork, pitch canned solutions, burn hours in meetings that go nowhere — and leave you with a bill and a stack of PDFs that never actually solve the problem. No real change. No real security. Just fluff.
             </p>
             <div class="spotlight-divider" aria-hidden="true"></div>
             <p class="spotlight-message">
@@ -499,9 +501,7 @@
               We built it to do the opposite. <strong>No BS. No templates. No buzzword bingo.</strong>
             </p>
             <p class="spotlight-message">
-              Just practical, tailored DevSecOps strategies that work in your
-              environment — with your teams, your tech stack, and your business
-              priorities in mind.
+              Just practical, tailored DevSecOps strategies that work in your environment — with your teams, your tech stack, and your business priorities in mind.
             </p>
           </div>
 
