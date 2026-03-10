@@ -535,7 +535,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -1116,7 +1116,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   }
 
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .whyus-grid {
@@ -1153,6 +1153,10 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 @media (max-width: 768px) {
   .nav-hamburger { display: flex; }
   .nav-cta { display: none; }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 
   .nav-links {
     position: fixed;
