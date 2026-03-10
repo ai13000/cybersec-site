@@ -547,7 +547,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   position: relative;
   overflow: hidden;
   transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease), border-color 0.28s var(--ease);
-  cursor: default;
+  cursor: pointer;
 }
 .service-card::before {
   content: '';
@@ -564,23 +564,6 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   border-left-color: var(--accent);
 }
 .service-card:hover::before { opacity: 1; }
-
-.service-icon {
-  color: var(--navy);
-  margin-bottom: 24px;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--off-white);
-  border-radius: 0;
-  transition: background 0.25s, color 0.25s;
-}
-.service-card:hover .service-icon {
-  background: var(--navy);
-  color: var(--accent);
-}
 
 .service-role {
   font-family: var(--font-head);
@@ -639,6 +622,13 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   text-transform: uppercase;
   color: var(--navy);
   transition: color 0.2s, letter-spacing 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.service-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 .service-link:hover {
   color: var(--accent-dark);
