@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — CyberSec Gard</title>
+  <meta name="description" content="CyberSec Gard is a practitioner-led DevSecOps and Application Security consulting firm based in St. Louis. Meet the team and learn about our mission." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Page Hero ─────────────────────────────────────────── */
+    .about-hero {
+      background: var(--navy-dark);
+      padding: clamp(80px, 12vh, 140px) 0 clamp(60px, 9vh, 110px);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 55% at 15% 60%, rgba(64,104,216,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .about-hero .container {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+    .about-hero-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .about-hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(34px, 5vw, 72px);
+      line-height: 1.03;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    .about-hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .about-hero-sub {
+      font-size: clamp(16px, 1.5vw, 19px);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ── Mission ───────────────────────────────────────────── */
+    .about-mission {
+      background: var(--white);
+      padding: clamp(60px, 9vh, 100px) 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .about-mission-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-mission-text .section-label { margin-bottom: 16px; }
+    .about-mission-body {
+      font-size: clamp(15px, 1.4vw, 17px);
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+    .about-mission-body + .about-mission-body { margin-top: 16px; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--gray-200);
+      border: 1px solid var(--gray-200);
+    }
+    .about-stat {
+      background: var(--white);
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .about-stat-number {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(30px, 3.5vw, 44px);
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .about-stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ── Values (re-uses whyus styles) ────────────────────── */
+    .about-values {
+      background: var(--navy-dark);
+      padding: clamp(60px, 9vh, 100px) 0;
+    }
+    .about-values .section-label { color: rgba(255,255,255,0.3); }
+    .about-values .section-title { color: var(--white); }
+    .about-values .section-title .title-muted { color: rgba(255,255,255,0.35); }
+    .about-values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 48px;
+    }
+    .about-value-item {
+      background: var(--navy-dark);
+      padding: 40px 36px;
+      transition: background 0.25s var(--ease);
+    }
+    .about-value-item:hover { background: rgba(255,255,255,0.04); }
+    .about-value-num {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .about-value-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .about-value-body {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ── Methodology (re-uses process styles) ──────────────── */
+    .about-process {
+      background: var(--off-white);
+      padding: clamp(60px, 9vh, 100px) 0;
+    }
+
+    /* ── Industries ────────────────────────────────────────── */
+    .about-industries {
+      background: var(--white);
+      padding: clamp(60px, 9vh, 100px) 0;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    /* ── Testimonials ──────────────────────────────────────── */
+    .about-testimonials {
+      background: var(--navy-dark);
+      padding: clamp(60px, 9vh, 100px) 0;
+    }
+    .about-testimonials .section-title { color: var(--white); }
+    .about-testimonials .section-label { color: rgba(255,255,255,0.3); }
+    .about-testimonials .section-title .title-muted { color: rgba(255,255,255,0.35); }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-mission-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-values-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="nav-wrapper" id="nav" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="CyberSec Gard home">
+        <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="72" height="72" />
+        <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+      </a>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="index.html#services" class="nav-link">Services</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <a href="index.html#contact" class="nav-cta" aria-label="Schedule a consultation">Schedule a Call</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="about-hero" aria-labelledby="about-hero-title">
+      <div class="container">
+        <p class="about-hero-label">Who We Are</p>
+        <h1 class="about-hero-title" id="about-hero-title">
+          Built by<br/><em>practitioners.</em><br/>For practitioners.
+        </h1>
+        <p class="about-hero-sub">
+          CyberSec Gard is a DevSecOps and Application Security consulting firm
+          based in St. Louis. We work with engineering and security leaders who
+          need real expertise — not templated reports.
+        </p>
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="about-mission" aria-labelledby="about-mission-title">
+      <div class="container">
+        <div class="about-mission-inner">
+
+          <div class="about-mission-text">
+            <div class="section-label" aria-hidden="true">Our Mission</div>
+            <h2 class="section-title" id="about-mission-title">
+              Security that<br/>
+              <span class="title-muted">ships with your code.</span>
+            </h2>
+            <p class="about-mission-body">
+              Most security engagements produce a PDF. We produce outcomes.
+              CyberSec Gard was founded on the belief that security has to live
+              inside your development process — not audit it from the outside.
+            </p>
+            <p class="about-mission-body">
+              Every engineer on our team has held a production role — as a developer,
+              a DevOps lead, or a security operator inside a real incident. That
+              experience shapes how we engage: embedded, opinionated, and accountable
+              for results.
+            </p>
+          </div>
+
+          <div class="about-stats" aria-label="Key metrics">
+            <div class="about-stat">
+              <div class="about-stat-number">36+</div>
+              <div class="about-stat-label">Consecutive months zero material breaches across client base</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-number">100%</div>
+              <div class="about-stat-label">Engagements led by certified practitioners — not junior analysts</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-number">6</div>
+              <div class="about-stat-label">Industries served including FinTech, Healthcare, and Defense</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-number">NDA</div>
+              <div class="about-stat-label">Every engagement protected by mutual NDA — confidentiality guaranteed</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="about-values" aria-labelledby="about-values-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Why CyberSec Gard</div>
+        <h2 class="section-title" id="about-values-title">
+          We've been on both sides —<br/>
+          <span class="title-muted">inside the breach, and preventing the next one.</span>
+        </h2>
+
+        <div class="about-values-grid">
+
+          <div class="about-value-item">
+            <div class="about-value-num">01</div>
+            <h3 class="about-value-title">Practitioner-led, not analyst-written</h3>
+            <p class="about-value-body">Every engagement is led by engineers who've built, broken, and secured production systems. Not consultants who've read about it.</p>
+          </div>
+
+          <div class="about-value-item">
+            <div class="about-value-num">02</div>
+            <h3 class="about-value-title">Embedded, not parachuted</h3>
+            <p class="about-value-body">We work inside your tools — Jira, GitHub, Slack, your SIEM. No 300-page PDF reports that gather dust. Actionable findings integrated into your workflow.</p>
+          </div>
+
+          <div class="about-value-item">
+            <div class="about-value-num">03</div>
+            <h3 class="about-value-title">Zero material breaches — 36 consecutive months</h3>
+            <p class="about-value-body">Across our monitored client base. We track this metric because we believe security firms should be accountable for outcomes, not just deliverables.</p>
+          </div>
+
+          <div class="about-value-item">
+            <div class="about-value-num">04</div>
+            <h3 class="about-value-title">OSCP / CISSP / CEH certified team</h3>
+            <p class="about-value-body">Credentials that demand hands-on technical proficiency — not just multiple-choice exams. Our team maintains active certifications and ongoing research.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section class="about-process process" aria-labelledby="about-process-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Our Methodology</div>
+        <h2 class="section-title" id="about-process-title">
+          A process built on<br/>
+          <span class="title-muted">adversarial thinking.</span>
+        </h2>
+
+        <div class="process-timeline" role="list" aria-label="Engagement phases">
+
+          <div class="process-step reveal" role="listitem" aria-labelledby="as1-title">
+            <div class="step-number" aria-hidden="true">01</div>
+            <div class="step-body">
+              <h3 class="step-title" id="as1-title">Reconnaissance Mapping</h3>
+              <p class="step-desc">We map your external attack surface before adversaries do — domains, exposed services, credential leaks, supplier risk.</p>
+            </div>
+          </div>
+          <div class="process-connector" aria-hidden="true"><span></span></div>
+
+          <div class="process-step reveal" role="listitem" aria-labelledby="as2-title">
+            <div class="step-number" aria-hidden="true">02</div>
+            <div class="step-body">
+              <h3 class="step-title" id="as2-title">Attack Surface Analysis</h3>
+              <p class="step-desc">Deep technical enumeration of your application portfolio, infrastructure, and data flows. Every trust boundary documented.</p>
+            </div>
+          </div>
+          <div class="process-connector" aria-hidden="true"><span></span></div>
+
+          <div class="process-step reveal" role="listitem" aria-labelledby="as3-title">
+            <div class="step-number" aria-hidden="true">03</div>
+            <div class="step-body">
+              <h3 class="step-title" id="as3-title">Threat Modeling</h3>
+              <p class="step-desc">Structured adversarial analysis using STRIDE and PASTA. Risk-ranked findings tied to business impact, not CVSS scores in isolation.</p>
+            </div>
+          </div>
+          <div class="process-connector" aria-hidden="true"><span></span></div>
+
+          <div class="process-step reveal" role="listitem" aria-labelledby="as4-title">
+            <div class="step-number" aria-hidden="true">04</div>
+            <div class="step-body">
+              <h3 class="step-title" id="as4-title">Remediation Architecture</h3>
+              <p class="step-desc">We don't just hand you a list. We design the fixes — security controls, code-level guidance, infrastructure changes — integrated into your sprint cycles.</p>
+            </div>
+          </div>
+          <div class="process-connector" aria-hidden="true"><span></span></div>
+
+          <div class="process-step reveal" role="listitem" aria-labelledby="as5-title">
+            <div class="step-number" aria-hidden="true">05</div>
+            <div class="step-body">
+              <h3 class="step-title" id="as5-title">Continuous Monitoring</h3>
+              <p class="step-desc">Security is not a project. We establish detection pipelines, alerting logic, and quarterly review cadences — so you see threats before they escalate.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section class="about-industries" aria-labelledby="about-industries-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Experience</div>
+        <h2 class="section-title" id="about-industries-title">
+          Deep expertise across<br/>
+          <span class="title-muted">high-stakes industries.</span>
+        </h2>
+
+        <div class="logos-row reveal" style="margin-top:40px;" aria-label="Industries served">
+          <div class="logos-label">Industries served</div>
+          <div class="logos-strip" role="list">
+            <div class="logo-pill" role="listitem">Financial Services</div>
+            <div class="logo-pill" role="listitem">Healthcare &amp; Life Sciences</div>
+            <div class="logo-pill" role="listitem">B2B SaaS</div>
+            <div class="logo-pill" role="listitem">Defense Contractors</div>
+            <div class="logo-pill" role="listitem">Critical Infrastructure</div>
+            <div class="logo-pill" role="listitem">Government &amp; Public Sector</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="about-testimonials proof" aria-labelledby="about-t-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Client Outcomes</div>
+        <h2 class="section-title" id="about-t-title">
+          Trusted by security leaders<br/>
+          <span class="title-muted">who can't afford a second chance.</span>
+        </h2>
+
+        <div class="testimonials-grid" style="margin-top:48px;">
+
+          <figure class="testimonial-card testimonial-card--offset reveal" aria-labelledby="at1-attr">
+            <blockquote>
+              <p>"SecureForge didn't deliver a report — they delivered a program. Three months after engagement, our AppSec pipeline catches what used to reach production. That's measurable."</p>
+            </blockquote>
+            <figcaption id="at1-attr">
+              <strong>VP of Engineering</strong>
+              <span>Enterprise FinTech, Series D</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card reveal" aria-labelledby="at2-attr">
+            <blockquote>
+              <p>"I've worked with three other security consultancies. SecureForge is the first team I'd put in front of my board and feel confident. Their threat modeling output was the most technically credible I've seen."</p>
+            </blockquote>
+            <figcaption id="at2-attr">
+              <strong>CISO</strong>
+              <span>Regional Healthcare Network, 8,000+ employees</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card testimonial-card--low reveal" aria-labelledby="at3-attr">
+            <blockquote>
+              <p>"They understand what it means to ship fast and stay secure. Our DevSecOps pipeline went from a friction point to a competitive advantage. I didn't think that was possible."</p>
+            </blockquote>
+            <figcaption id="at3-attr">
+              <strong>Head of DevSecOps</strong>
+              <span>B2B SaaS Platform, 500+ engineers</span>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner" id="contact" aria-labelledby="about-cta-title">
+      <div class="cta-pattern" aria-hidden="true">
+        <svg width="100%" height="100%" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="iso" width="80" height="46" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 80 23 L 40 46 L 0 23 Z" fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.06"/>
+            </pattern>
+          </defs>
+          <rect width="800" height="400" fill="url(#iso)"/>
+        </svg>
+      </div>
+      <div class="cta-content reveal">
+        <div class="cta-label" aria-hidden="true">Ready to Engage</div>
+        <h2 class="cta-headline" id="about-cta-title">
+          Is your security posture ready for a sophisticated adversary?
+        </h2>
+        <p class="cta-sub">
+          Most organizations discover gaps only after an incident. Our assessments
+          find what your adversaries are looking for — before they do.
+        </p>
+        <div class="cta-actions">
+          <a href="mailto:engage@secureforge.com" class="btn btn-cta-primary">Schedule a Confidential Assessment</a>
+          <a href="tel:+13145550199" class="btn btn-cta-ghost">+1 (314) 555-0199</a>
+        </div>
+        <p class="cta-note">All engagements are covered by a mutual NDA. Findings remain confidential.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo footer-logo" aria-label="CyberSec Gard home">
+            <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="40" height="40" />
+            <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+          </a>
+          <p class="footer-tagline">Enterprise DevSecOps and Application Security consulting. St. Louis, USA.</p>
+          <div class="footer-social" aria-label="Social links">
+            <a href="#" class="footer-social-link">LinkedIn</a>
+            <a href="#" class="footer-social-link">GitHub</a>
+            <a href="#" class="footer-social-link">Research Blog</a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-labelledby="footer-services-label">
+          <h4 class="footer-nav-title" id="footer-services-label">Services</h4>
+          <ul role="list">
+            <li><a href="discovery-call.html">Free Discovery Call</a></li>
+            <li><a href="index.html#services">DevSecOps Maturity Assessment</a></li>
+            <li><a href="index.html#services">CI/CD Pipeline Security</a></li>
+            <li><a href="index.html#services">DevSecOps Training</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-labelledby="footer-company-label">
+          <h4 class="footer-nav-title" id="footer-company-label">Company</h4>
+          <ul role="list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#why-us">Why SecureForge</a></li>
+            <li><a href="index.html#process">Methodology</a></li>
+            <li><a href="index.html#proof">Client Results</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact" id="footer-contact-label">
+          <h4 class="footer-nav-title">Contact</h4>
+          <address>
+            <p><a href="mailto:engage@secureforge.com">engage@secureforge.com</a></p>
+            <p><a href="tel:+13145550199">+1 (314) 555-0199</a></p>
+            <p>St. Louis, MO 63101<br/>United States</p>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 CyberSec Gard LLC. All rights reserved.</p>
+        <div class="footer-badges" aria-label="Certifications">
+          <span class="cert-badge">SOC 2 Aligned</span>
+          <span class="cert-badge">ISO 27001</span>
+          <span class="cert-badge">OSCP Certified Team</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
