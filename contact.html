@@ -212,6 +212,34 @@
       line-height: 1.5;
       text-align: center;
     }
+    .form-submit:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-feedback {
+      display: none;
+      padding: 14px 18px;
+      margin-top: 16px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-left: 4px solid;
+    }
+    .form-feedback.success {
+      display: block;
+      background: rgba(34,197,94,0.08);
+      border-color: #22c55e;
+      color: #166534;
+    }
+    .form-feedback.error {
+      display: block;
+      background: rgba(239,68,68,0.08);
+      border-color: #ef4444;
+      color: #991b1b;
+    }
 
     /* ── Responsive ──────────────────────────────────────────── */
     @media (max-width: 900px) {
@@ -307,7 +335,7 @@
             <h2 class="contact-form-title">Send Us a Message</h2>
             <p class="contact-form-desc">Tell us about your challenge. We'll respond within one business day.</p>
 
-            <form action="mailto:info@cybersecgard.com" method="post" enctype="text/plain" aria-label="Contact form">
+            <form id="contact-form" aria-label="Contact form" novalidate>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="cf-name">Name <span>*</span></label>
@@ -346,7 +374,8 @@
                 <textarea class="form-textarea" id="cf-message" name="message" required placeholder="Describe your security challenge or what you'd like to discuss…"></textarea>
               </div>
 
-              <button type="submit" class="form-submit">Send Message →</button>
+              <button type="submit" class="form-submit" id="cf-submit">Send Message →</button>
+              <div class="form-feedback" id="cf-feedback" role="alert" aria-live="polite"></div>
               <p class="form-note">All inquiries are covered by a mutual NDA upon request. Your information is never shared.</p>
             </form>
           </div>
@@ -415,5 +444,53 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init({ publicKey: 'BxQciHwfVdfRGkchj' });
+
+      var form     = document.getElementById('contact-form');
+      var btn      = document.getElementById('cf-submit');
+      var feedback = document.getElementById('cf-feedback');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Basic HTML5 validation
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        btn.disabled    = true;
+        btn.textContent = 'Sending…';
+        feedback.className = 'form-feedback';
+        feedback.textContent = '';
+
+        var params = {
+          name:    document.getElementById('cf-name').value.trim(),
+          email:   document.getElementById('cf-email').value.trim(),
+          company: document.getElementById('cf-company').value.trim() || 'N/A',
+          service: document.getElementById('cf-service').value || 'Not specified',
+          message: document.getElementById('cf-message').value.trim(),
+        };
+
+        emailjs.send('service_whitzrx', 'template_1n1dbkh', params)
+          .then(function () {
+            feedback.className   = 'form-feedback success';
+            feedback.textContent = 'Message sent! We\'ll be in touch within one business day.';
+            form.reset();
+          })
+          .catch(function () {
+            feedback.className   = 'form-feedback error';
+            feedback.textContent = 'Something went wrong. Please email us directly at info@cybersecgard.com.';
+          })
+          .finally(function () {
+            btn.disabled    = false;
+            btn.textContent = 'Send Message →';
+          });
+      });
+    })();
+  </script>
 </body>
 </html>
