@@ -328,12 +328,15 @@
                   <label class="form-label" for="cf-service">How Can We Help?</label>
                   <select class="form-select form-input" id="cf-service" name="service">
                     <option value="">Select a topic…</option>
-                    <option value="devsecops-assessment">DevSecOps Assessment</option>
-                    <option value="cicd-security">CI/CD Pipeline Security</option>
-                    <option value="appsec">Application Security</option>
-                    <option value="training">DevSecOps Training</option>
-                    <option value="discovery-call">Free Discovery Call</option>
-                    <option value="other">Other</option>
+                    <optgroup label="── General">
+                      <option value="general">General Request</option>
+                    </optgroup>
+                    <optgroup label="── Our Services">
+                      <option value="discovery-call">Free Discovery Call</option>
+                      <option value="devsecops-assessment">Core DevSecOps Maturity Assessment</option>
+                      <option value="cicd-security">Tailored CI/CD Pipeline Security Integration</option>
+                      <option value="training">DevSecOps Training</option>
+                    </optgroup>
                   </select>
                 </div>
               </div>
