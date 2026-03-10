@@ -9,6 +9,111 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Leadership Spotlight ───────────────────────────────── */
+    .spotlight {
+      background: var(--navy-dark);
+      padding: clamp(64px, 10vh, 112px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .spotlight::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 70% at 100% 50%, rgba(64,104,216,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .spotlight-inner {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 72px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .spotlight-photo {
+      position: relative;
+    }
+    .spotlight-photo img {
+      width: 100%;
+      aspect-ratio: 3 / 3.8;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border-top: 4px solid var(--accent);
+    }
+    .spotlight-photo-caption {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 20px;
+      margin-top: 0;
+    }
+    .spotlight-photo-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .spotlight-photo-role {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+    .spotlight-content .section-label {
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+    }
+    .spotlight-headline {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(26px, 3vw, 42px);
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .spotlight-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .spotlight-contrast {
+      font-size: clamp(14px, 1.3vw, 16px);
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      padding-left: 16px;
+      border-left: 2px solid rgba(255,255,255,0.12);
+    }
+    .spotlight-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin: 28px 0;
+    }
+    .spotlight-message {
+      font-size: clamp(15px, 1.4vw, 17px);
+      color: rgba(255,255,255,0.85);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .spotlight-message strong {
+      color: var(--white);
+    }
+    @media (max-width: 1024px) {
+      .spotlight-inner { grid-template-columns: 280px 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .spotlight-inner { grid-template-columns: 1fr; gap: 40px; }
+      .spotlight-photo img { aspect-ratio: 4 / 3; object-position: center 15%; }
+    }
+  </style>
 </head>
 <body>
 
@@ -356,6 +461,50 @@
             <div class="logo-pill" role="listitem">Critical Infrastructure</div>
             <div class="logo-pill" role="listitem">Government &amp; Public Sector</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         LEADERSHIP SPOTLIGHT
+    ═══════════════════════════════════════════════ -->
+    <section class="spotlight" aria-labelledby="spotlight-headline">
+      <div class="container">
+        <div class="spotlight-inner">
+
+          <div class="spotlight-photo">
+            <img src="Edward2.png" alt="Edward J. Liebig, Co-Founder of CyberSec Gard" />
+            <div class="spotlight-photo-caption">
+              <div class="spotlight-photo-name">Edward J. Liebig</div>
+              <div class="spotlight-photo-role">Co-Founder &amp; CTO</div>
+            </div>
+          </div>
+
+          <div class="spotlight-content reveal">
+            <div class="section-label" aria-hidden="true">Leadership Spotlight</div>
+            <h2 class="spotlight-headline" id="spotlight-headline">
+              We're not like most<br/><em>cybersecurity</em><br/>consulting companies.
+            </h2>
+            <p class="spotlight-contrast">
+              They bury you in generic paperwork, pitch canned solutions, burn hours
+              in meetings that go nowhere — and leave you with a bill and a stack of
+              PDFs that never actually solve the problem. No real change. No real
+              security. Just fluff.
+            </p>
+            <div class="spotlight-divider" aria-hidden="true"></div>
+            <p class="spotlight-message">
+              <strong>That's exactly why we started CyberSec Gard.</strong>
+            </p>
+            <p class="spotlight-message">
+              We built it to do the opposite. <strong>No BS. No templates. No buzzword bingo.</strong>
+            </p>
+            <p class="spotlight-message">
+              Just practical, tailored DevSecOps strategies that work in your
+              environment — with your teams, your tech stack, and your business
+              priorities in mind.
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
