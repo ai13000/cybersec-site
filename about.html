@@ -199,19 +199,17 @@
       border-top-color: var(--accent);
     }
     .team-avatar {
-      width: 56px;
-      height: 56px;
-      background: var(--navy);
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: 18px;
-      color: var(--white);
+      object-fit: cover;
+      object-position: center top;
       margin-bottom: 20px;
-      letter-spacing: 0.02em;
+      border: 3px solid var(--gray-200);
+      display: block;
+    }
+    .team-card:hover .team-avatar {
+      border-color: var(--accent);
     }
     .team-name {
       font-family: var(--font-head);
@@ -351,28 +349,28 @@
         <div class="about-team-grid">
 
           <div class="team-card">
-            <div class="team-avatar" aria-hidden="true">EL</div>
+            <img class="team-avatar" src="Edward2.png" alt="Edward Liebig" />
             <div class="team-name">Edward Liebig</div>
             <div class="team-role">CTO</div>
             <p class="team-bio">A seasoned cybersecurity technology leader focused on delivering resilient, business-aligned security capabilities.</p>
           </div>
 
           <div class="team-card">
-            <div class="team-avatar" aria-hidden="true">DL</div>
+            <img class="team-avatar" src="Dmitrii%2011.png" alt="Dmitrii Lomakin" />
             <div class="team-name">Dmitrii Lomakin</div>
             <div class="team-role">Head of Sales</div>
             <p class="team-bio">An experienced application security sales professional focused on delivering measurable security and business value across application environments.</p>
           </div>
 
           <div class="team-card">
-            <div class="team-avatar" aria-hidden="true">SB</div>
+            <img class="team-avatar" src="Steve%203.png" alt="Steve Berger" />
             <div class="team-name">Steve Berger</div>
             <div class="team-role">Cybersecurity Consultant</div>
             <p class="team-bio">A cybersecurity consultant focused on strengthening security resilience and delivering measurable risk reduction across enterprise environments.</p>
           </div>
 
           <div class="team-card">
-            <div class="team-avatar" aria-hidden="true">IM</div>
+            <img class="team-avatar" src="Igor%20Matlin%203%20.png" alt="Igor Matlin" />
             <div class="team-name">Igor Matlin</div>
             <div class="team-role">Application Security Architect</div>
             <p class="team-bio">A results-driven application security architect focused on strengthening application defenses and aligning security with business priorities.</p>
