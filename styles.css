@@ -622,13 +622,12 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   text-transform: uppercase;
   color: var(--navy);
   transition: color 0.2s, letter-spacing 0.2s;
-  position: relative;
-  z-index: 1;
 }
 .service-link::after {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
 }
 .service-link:hover {
   color: var(--accent-dark);
