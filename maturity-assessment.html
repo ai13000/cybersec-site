@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Core DevSecOps Maturity Assessment — CyberSec Gard</title>
+  <meta name="description" content="A structured DevSecOps Maturity Assessment that maps every gap in your pipeline — code, dependencies, containers, secrets, and more — and returns a prioritized roadmap you can act on." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Page Hero ─────────────────────────────────────────── */
+    .ma-hero {
+      background: var(--navy-dark);
+      padding: clamp(80px, 12vh, 140px) 0 clamp(60px, 9vh, 110px);
+      position: relative;
+      overflow: hidden;
+    }
+    .ma-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(64,104,216,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ma-hero .container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .ma-hero-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .ma-hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(30px, 4vw, 56px);
+      line-height: 1.04;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+    .ma-hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .ma-hero-sub {
+      font-size: clamp(15px, 1.4vw, 17px);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .ma-hero-disclaimer {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 20px;
+    }
+
+    /* Right panel */
+    .ma-hero-panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 2px;
+      padding: 40px 40px 44px;
+    }
+    .ma-hero-panel-title {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 28px;
+    }
+    .ma-bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    .ma-bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.55;
+    }
+    .ma-bullet-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* ── Intro ──────────────────────────────────────────────── */
+    .ma-intro {
+      background: #EEF2FF;
+      padding: clamp(56px, 8vh, 96px) 0;
+    }
+    .ma-intro .container {
+      max-width: 800px;
+    }
+    .ma-intro-text {
+      font-size: clamp(16px, 1.5vw, 19px);
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .ma-intro-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Assessment Domains ─────────────────────────────────── */
+    .ma-domains {
+      background: #F8FAFC;
+      padding: clamp(56px, 8vh, 96px) 0;
+    }
+    .ma-domains-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .ma-domain-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-top: 4px solid var(--navy);
+      padding: 36px 32px 40px;
+      transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+    }
+    .ma-domain-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+      border-top-color: var(--accent);
+    }
+    .ma-domain-num {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .ma-domain-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .ma-domain-question {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--accent-dark);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .ma-domain-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Deliverables ───────────────────────────────────────── */
+    .ma-deliver {
+      background: var(--navy-dark);
+      padding: clamp(56px, 8vh, 96px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .ma-deliver::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(64,104,216,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .ma-deliver .container { position: relative; z-index: 1; }
+    .ma-deliver .section-label { color: rgba(255,255,255,0.3); }
+    .ma-deliver .section-title { color: var(--white); }
+    .ma-deliver .section-title .title-muted { color: rgba(255,255,255,0.4); }
+
+    .ma-deliver-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .ma-deliver-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 4px solid var(--accent);
+      padding: 32px 36px;
+    }
+    .ma-deliver-letter {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .ma-deliver-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .ma-deliver-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ── Process ────────────────────────────────────────────── */
+    .ma-process {
+      background: #EEF2FF;
+      padding: clamp(56px, 8vh, 96px) 0;
+    }
+    .ma-process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 56px;
+      position: relative;
+    }
+    .ma-process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: var(--gray-200);
+      z-index: 0;
+    }
+    .ma-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .ma-step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+    .ma-step-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .ma-step-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── Standalone Statement ───────────────────────────────── */
+    .ma-standalone {
+      background: #F8FAFC;
+      padding: clamp(56px, 8vh, 96px) 0;
+    }
+    .ma-standalone-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .ma-standalone-heading {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1.1;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    .ma-standalone-heading em {
+      font-style: italic;
+      color: var(--accent-dark);
+    }
+    .ma-standalone-body {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .ma-standalone-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .ma-domains-grid { grid-template-columns: repeat(2, 1fr); }
+      .ma-process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .ma-process-steps::before { display: none; }
+    }
+    @media (max-width: 900px) {
+      .ma-hero .container { grid-template-columns: 1fr; gap: 40px; }
+      .ma-deliver-grid { grid-template-columns: 1fr; }
+      .ma-standalone-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 640px) {
+      .ma-hero-panel { padding: 28px 24px 32px; }
+      .ma-domains-grid { grid-template-columns: 1fr; }
+      .ma-process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="nav-wrapper" id="nav" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="CyberSec Gard home">
+        <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="72" height="72" />
+        <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+      </a>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="index.html#services" class="nav-link active">Services</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <a href="contact.html" class="nav-cta" aria-label="Talk to an expert">Talk to an Expert</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section class="ma-hero" aria-labelledby="ma-hero-title">
+      <div class="container">
+
+        <div class="ma-hero-left">
+          <p class="ma-hero-label">Core Assessment Service — For Security Leaders</p>
+          <h1 class="ma-hero-title" id="ma-hero-title">You Can't Fix<br/>What You<br/><em>Haven't Mapped.</em></h1>
+          <p class="ma-hero-sub">
+            A structured assessment of your entire software delivery pipeline — code, dependencies,
+            containers, secrets, and CI/CD — that returns a prioritized roadmap you can act on.
+            No implementation. No guesswork. Just a clear, honest picture of where you stand.
+          </p>
+          <a href="contact.html" class="btn btn-primary">Talk to an Expert</a>
+          <p class="ma-hero-disclaimer">Assessment only &mdash; strategy and roadmap, not implementation</p>
+        </div>
+
+        <div class="ma-hero-panel" aria-label="What you walk away with">
+          <p class="ma-hero-panel-title">What you walk away with</p>
+          <ul class="ma-bullet-list">
+            <li>A maturity scorecard across six critical DevSecOps security domains.</li>
+            <li>Risk-ranked findings in plain language — no vendor jargon, no noise.</li>
+            <li>A phased remediation roadmap built specifically for your environment and team.</li>
+            <li>Tooling and process recommendations aligned to your actual stack.</li>
+          </ul>
+          <a href="contact.html" class="btn btn-ghost" style="width:100%;justify-content:center;">Schedule Your Assessment</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════ INTRO ═══════════════════ -->
+    <section class="ma-intro" aria-label="About this assessment">
+      <div class="container">
+        <p class="ma-intro-text">
+          Most organizations are shipping fast and hoping for the best. Tools are cobbled together.
+          Pipelines have never been properly audited. Nobody's sure who owns secrets rotation.
+          Open-source dependencies are scanned inconsistently — if at all. <strong>The problem isn't a lack of effort.
+          It's a lack of visibility.</strong> The Core DevSecOps Maturity Assessment gives your security
+          leadership a complete, evidence-based view of your posture across every layer of software delivery.
+          Not a generic checklist. Not a vendor pitch. <strong>A real assessment of your real environment</strong> —
+          with a roadmap you can hand to your team on day one.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ ASSESSMENT DOMAINS ═══════════════════ -->
+    <section class="ma-domains" aria-labelledby="ma-domains-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">What We Assess</div>
+        <h2 class="section-title" id="ma-domains-title">
+          Six Domains. Every Layer<br/>
+          <span class="title-muted">of Your Delivery Pipeline.</span>
+        </h2>
+
+        <div class="ma-domains-grid">
+
+          <article class="ma-domain-card">
+            <div class="ma-domain-num">01</div>
+            <h3 class="ma-domain-title">Static Code Analysis (SAST)</h3>
+            <p class="ma-domain-question">"How do I add static code analysis to my pipeline — and actually trust the results?"</p>
+            <p class="ma-domain-desc">
+              We assess where SAST fits in your workflow, what it's genuinely catching, and where the blind spots are.
+              The goal isn't vanity scans with thousands of alerts — it's targeted, actionable analysis that your
+              developers will actually use. You leave with a practical roadmap for integrating SAST without
+              creating noise that gets ignored.
+            </p>
+          </article>
+
+          <article class="ma-domain-card">
+            <div class="ma-domain-num">02</div>
+            <h3 class="ma-domain-title">Dependency &amp; Supply Chain Risk (SCA)</h3>
+            <p class="ma-domain-question">"How do we know what's actually inside our open-source dependencies — and what's at risk?"</p>
+            <p class="ma-domain-desc">
+              Third-party libraries and open-source components are your fastest-growing attack surface. We evaluate
+              how your team currently manages dependencies, where risk is concentrated across your stack, and how
+              to implement Software Composition Analysis in a way that protects delivery without grinding it to a halt.
+              SBOMs and transitive dependency risk are part of the conversation.
+            </p>
+          </article>
+
+          <article class="ma-domain-card">
+            <div class="ma-domain-num">03</div>
+            <h3 class="ma-domain-title">Container &amp; Kubernetes Security</h3>
+            <p class="ma-domain-question">"How do we scan Docker images in CI/CD — and what do we do when vulnerabilities are found?"</p>
+            <p class="ma-domain-desc">
+              Containers power modern pipelines and create modern risks in equal measure. We assess your image
+              security posture, identify misconfigurations, vulnerable base images, and runtime exposure across
+              your Kubernetes environments. From there, we build a roadmap that makes container scanning a
+              sustainable, automated part of your DevSecOps practice — not a one-time checkbox.
+            </p>
+          </article>
+
+          <article class="ma-domain-card">
+            <div class="ma-domain-num">04</div>
+            <h3 class="ma-domain-title">Dynamic Application Testing (DAST)</h3>
+            <p class="ma-domain-question">"How can we add runtime security testing without slowing down delivery?"</p>
+            <p class="ma-domain-desc">
+              Static checks see the code. Dynamic testing sees how it behaves under real conditions — and surfaces
+              a different class of vulnerabilities entirely. We assess where DAST adds the most leverage in your
+              delivery cycle, how to prioritize runtime testing across environments, and how to integrate it in
+              a way that doesn't become a deployment bottleneck.
+            </p>
+          </article>
+
+          <article class="ma-domain-card">
+            <div class="ma-domain-num">05</div>
+            <h3 class="ma-domain-title">Secrets &amp; Credentials Governance</h3>
+            <p class="ma-domain-question">"How do we stop hard-coded secrets from leaking into our commits — for good?"</p>
+            <p class="ma-domain-desc">
+              Exposed credentials are one of the fastest, most preventable paths to a breach. We assess your current
+              exposure across repositories, pipelines, and developer workflows. Then we work with your team to
+              understand the root causes — not just the symptoms — and design a governance framework for long-term
+              secrets management that prevents problems before they become incidents.
+            </p>
+          </article>
+
+          <article class="ma-domain-card">
+            <div class="ma-domain-num">06</div>
+            <h3 class="ma-domain-title">Pipeline Hardening &amp; Code Signing</h3>
+            <p class="ma-domain-question">"How do we protect our pipeline from supply chain attacks — and prove our artifacts are trusted?"</p>
+            <p class="ma-domain-desc">
+              Your CI/CD pipeline is critical infrastructure. We treat it like one. From artifact integrity and
+              supply chain transparency to build security and code signing — we assess every vulnerability and
+              design a resilience strategy that holds up as your pipeline scales. You'll know exactly where an
+              attacker could interfere, and exactly how to stop them.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ DELIVERABLES ═══════════════════ -->
+    <section class="ma-deliver" aria-labelledby="ma-deliver-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">The Output</div>
+        <h2 class="section-title" id="ma-deliver-title">
+          Four Concrete Deliverables.<br/>
+          <span class="title-muted">Everything you need to move forward.</span>
+        </h2>
+
+        <div class="ma-deliver-grid">
+
+          <div class="ma-deliver-item">
+            <p class="ma-deliver-letter">Deliverable A</p>
+            <h3 class="ma-deliver-title">Executive Maturity Scorecard</h3>
+            <p class="ma-deliver-desc">
+              A domain-by-domain view of your DevSecOps maturity, calibrated against your environment,
+              industry context, and team size. Clear ratings. Honest assessments. No vanity scores that
+              make everyone feel good while the pipeline stays exposed.
+            </p>
+          </div>
+
+          <div class="ma-deliver-item">
+            <p class="ma-deliver-letter">Deliverable B</p>
+            <h3 class="ma-deliver-title">Risk-Ranked Findings Report</h3>
+            <p class="ma-deliver-desc">
+              Every gap across all six domains, ranked by severity and real business impact. You'll know
+              exactly what matters, why it matters, and what the consequence of inaction looks like —
+              explained in language that works for both the board room and the engineering floor.
+            </p>
+          </div>
+
+          <div class="ma-deliver-item">
+            <p class="ma-deliver-letter">Deliverable C</p>
+            <h3 class="ma-deliver-title">Prioritized Remediation Roadmap</h3>
+            <p class="ma-deliver-desc">
+              A phased, step-by-step plan for addressing every finding. Quick wins are surfaced first
+              so your team can show progress immediately. Long-term structural improvements are mapped
+              to realistic timelines. This isn't a wish list — it's an execution plan.
+            </p>
+          </div>
+
+          <div class="ma-deliver-item">
+            <p class="ma-deliver-letter">Deliverable D</p>
+            <h3 class="ma-deliver-title">Tooling &amp; Process Recommendations</h3>
+            <p class="ma-deliver-desc">
+              Specific, stack-aware recommendations for tools and process changes — aligned to what your
+              team can actually adopt and sustain. We don't recommend tools we're paid to recommend.
+              We recommend what fits your environment, your team's maturity, and your budget.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ PROCESS ═══════════════════ -->
+    <section class="ma-process" aria-labelledby="ma-process-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">How It Works</div>
+        <h2 class="section-title" id="ma-process-title">
+          A Structured Engagement.<br/>
+          <span class="title-muted">No open-ended discovery. No surprises.</span>
+        </h2>
+
+        <div class="ma-process-steps">
+
+          <div class="ma-step">
+            <div class="ma-step-num">01</div>
+            <h3 class="ma-step-title">Stakeholder Alignment</h3>
+            <p class="ma-step-desc">
+              We align on your environment, team structure, technology stack, and business priorities.
+              Every assumption is surfaced and resolved before the assessment begins.
+            </p>
+          </div>
+
+          <div class="ma-step">
+            <div class="ma-step-num">02</div>
+            <h3 class="ma-step-title">Technical Environment Review</h3>
+            <p class="ma-step-desc">
+              We examine your repositories, CI/CD pipelines, container practices, secrets management,
+              dependency scanning, and existing security tooling in depth.
+            </p>
+          </div>
+
+          <div class="ma-step">
+            <div class="ma-step-num">03</div>
+            <h3 class="ma-step-title">Analysis &amp; Scoring</h3>
+            <p class="ma-step-desc">
+              We synthesize findings, calibrate risk ratings, and build your roadmap.
+              Every recommendation is tied to a real, observed finding — not a template.
+            </p>
+          </div>
+
+          <div class="ma-step">
+            <div class="ma-step-num">04</div>
+            <h3 class="ma-step-title">Findings Presentation</h3>
+            <p class="ma-step-desc">
+              We walk your team through the full assessment — executive summary, domain findings,
+              and complete roadmap — with dedicated time for strategic discussion.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ STANDALONE STATEMENT ═══════════════════ -->
+    <section class="ma-standalone" aria-labelledby="ma-standalone-title">
+      <div class="container">
+        <div class="ma-standalone-inner">
+
+          <div>
+            <h2 class="ma-standalone-heading" id="ma-standalone-title">
+              This Assessment<br/>Doesn't Touch<br/>Your Pipeline.<br/><em>That's the Point.</em>
+            </h2>
+          </div>
+
+          <div>
+            <p class="ma-standalone-body">
+              Before you invest in tooling, implementation, or training — you need to know where the
+              leverage actually is. The Core DevSecOps Maturity Assessment gives you that clarity.
+            </p>
+            <p class="ma-standalone-body">
+              <strong>It's not a sales exercise.</strong> It's not a foot in the door. It's a standalone
+              engagement that stands on its own — whether you work with us next or not. We skip templates
+              and buzzwords and design every assessment around your unique challenges, your team, and
+              your real security priorities.
+            </p>
+            <p class="ma-standalone-body">
+              You leave knowing exactly what's broken, exactly what matters most, and exactly what
+              to do first. <strong>The rest is up to you.</strong>
+            </p>
+            <a href="contact.html" class="btn btn-primary">Schedule Your Assessment</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo footer-logo" aria-label="CyberSec Gard home">
+            <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="40" height="40" />
+            <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+          </a>
+          <p class="footer-tagline">Your trusted guide on the DevSecOps journey — delivering expert solutions that bridge development, security, and operations with confidence.</p>
+          <div class="footer-social" aria-label="Social links">
+            <a href="https://www.linkedin.com/company/cybersec-gard" target="_blank" rel="noopener noreferrer" class="footer-social-link">LinkedIn</a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-labelledby="footer-services-label">
+          <h4 class="footer-nav-title" id="footer-services-label">Services</h4>
+          <ul role="list">
+            <li><a href="discovery-call.html">Free Discovery Call</a></li>
+            <li><a href="maturity-assessment.html">DevSecOps Maturity Assessment</a></li>
+            <li><a href="index.html#services">CI/CD Pipeline Security</a></li>
+            <li><a href="index.html#services">DevSecOps Training</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-labelledby="footer-company-label">
+          <h4 class="footer-nav-title" id="footer-company-label">Company</h4>
+          <ul role="list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#why-us">Why CyberSec Gard</a></li>
+            <li><a href="index.html#process">Methodology</a></li>
+            <li><a href="index.html#proof">Client Results</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact" id="footer-contact-label">
+          <h4 class="footer-nav-title">Contact</h4>
+          <address>
+            <p><a href="mailto:info@cybersecgard.com">info@cybersecgard.com</a></p>
+            <p><a href="tel:+13142283004">+1 (314) 228-3004</a></p>
+            <p>St. Louis, MO 63101<br/>United States</p>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 CyberSec Gard LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
