@@ -121,7 +121,7 @@
 
     /* ── Methodology Pillars ─────────────────────────────────── */
     .pillars {
-      background: #0F172A;
+      background: #F8FAFC;
       padding: clamp(64px, 9vh, 100px) 0;
     }
     .pillars-header {
@@ -134,21 +134,21 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #6B9AFF;
+      color: #3357C0;
       margin-bottom: 16px;
     }
     .pillars-headline {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       font-size: clamp(22px, 2.5vw, 34px);
-      color: #ffffff;
+      color: #0F172A;
       text-transform: uppercase;
       letter-spacing: -0.01em;
       line-height: 1.15;
     }
     .pillars-headline em {
       font-style: italic;
-      color: #6B9AFF;
+      color: #4068D8;
     }
     .pillars-grid {
       display: grid;
@@ -156,27 +156,29 @@
       gap: 24px;
     }
     .pillar-card {
-      background: #1E293B;
-      border-top: 3px solid #4068D8;
+      background: #ffffff;
+      border-top: 3px solid #1E3A8A;
       padding: 40px 36px;
-      transition: background 0.2s;
+      box-shadow: 0 2px 16px rgba(15,23,42,0.07);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
     .pillar-card:hover {
-      background: #243347;
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(15,23,42,0.13);
     }
     .pillar-number {
       font-family: 'Montserrat', sans-serif;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.2em;
-      color: #6B9AFF;
+      color: #4068D8;
       margin-bottom: 20px;
     }
     .pillar-title {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
       font-size: clamp(15px, 1.5vw, 19px);
-      color: #ffffff;
+      color: #0F172A;
       text-transform: uppercase;
       letter-spacing: 0.01em;
       line-height: 1.25;
@@ -184,7 +186,7 @@
     }
     .pillar-body {
       font-size: 15px;
-      color: #94A3B8;
+      color: #475569;
       line-height: 1.75;
     }
     @media (max-width: 768px) {
@@ -334,6 +336,13 @@
       </div>
     </section>
 
+    <!-- Services → Spotlight diagonal divider -->
+    <div class="section-divider" aria-hidden="true" style="background:#EEF2FF">
+      <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <polygon points="0,64 1440,0 1440,64" fill="#0F172A"/>
+      </svg>
+    </div>
+
     <!-- ═══════════════════════════════════════════════
          LEADERSHIP SPOTLIGHT
     ═══════════════════════════════════════════════ -->
@@ -373,6 +382,13 @@
       </div>
     </section>
 
+    <!-- Spotlight → Pillars diagonal divider -->
+    <div class="section-divider" aria-hidden="true" style="background:#0F172A">
+      <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <polygon points="0,64 1440,0 1440,64" fill="#F8FAFC"/>
+      </svg>
+    </div>
+
     <!-- ═══════════════════════════════════════════════
          METHODOLOGY PILLARS
     ═══════════════════════════════════════════════ -->
@@ -408,6 +424,13 @@
       </div>
     </section>
 
+
+    <!-- Pillars → Footer diagonal divider -->
+    <div class="section-divider" aria-hidden="true" style="background:#F8FAFC">
+      <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <polygon points="0,64 1440,0 1440,64" fill="#0F172A"/>
+      </svg>
+    </div>
 
   </main>
 
