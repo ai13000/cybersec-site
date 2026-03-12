@@ -157,20 +157,26 @@
     });
   });
 
-  /* ── Scroll-to-section via ?goto= parameter ─────────────── */
-  const gotoParam = new URLSearchParams(window.location.search).get('goto');
-  if (gotoParam) {
+  /* ── Cross-page scroll via sessionStorage ───────────────── */
+  // Store scroll target when navigating away to another page
+  document.querySelectorAll('a[data-scroll-to]').forEach(link => {
+    link.addEventListener('click', () => {
+      sessionStorage.setItem('scrollTo', link.dataset.scrollTo);
+    });
+  });
+
+  // On page load, scroll to stored target if present
+  const scrollTarget = sessionStorage.getItem('scrollTo');
+  if (scrollTarget) {
+    sessionStorage.removeItem('scrollTo');
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        const target = document.getElementById(gotoParam);
-        if (target) {
-          const html = document.documentElement;
-          html.style.scrollBehavior = 'auto';
-          window.scrollTo(0, target.offsetTop - 80);
-          html.style.scrollBehavior = '';
-        }
-      }, 200);
+      const target = document.getElementById(scrollTarget);
+      if (target) {
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, target.offsetTop - 80);
+        document.documentElement.style.scrollBehavior = '';
+      }
     });
   }
 
