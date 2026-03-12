@@ -160,13 +160,17 @@
   /* ── Scroll-to-section via ?goto= parameter ─────────────── */
   const gotoParam = new URLSearchParams(window.location.search).get('goto');
   if (gotoParam) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     window.addEventListener('load', () => {
       setTimeout(() => {
         const target = document.getElementById(gotoParam);
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const html = document.documentElement;
+          html.style.scrollBehavior = 'auto';
+          window.scrollTo(0, target.offsetTop - 80);
+          html.style.scrollBehavior = '';
         }
-      }, 300);
+      }, 200);
     });
   }
 
