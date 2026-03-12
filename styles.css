@@ -552,6 +552,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  margin-top: 56px;
 }
 
 .service-card {
