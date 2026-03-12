@@ -165,19 +165,23 @@
     });
   });
 
-  // On page load, scroll to stored target if present
+  // Scroll to stored target — run immediately (no 'load' listener needed;
+  // htmlpreview never fires 'load', and in normal browsers the script tag
+  // is at the bottom of <body> so the DOM is already ready).
   const scrollTarget = sessionStorage.getItem('scrollTo');
   if (scrollTarget) {
     sessionStorage.removeItem('scrollTo');
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    window.addEventListener('load', () => {
+    const doScroll = () => {
       const target = document.getElementById(scrollTarget);
       if (target) {
         document.documentElement.style.scrollBehavior = 'auto';
         window.scrollTo(0, target.offsetTop - 80);
         document.documentElement.style.scrollBehavior = '';
       }
-    });
+    };
+    doScroll();                  // immediate — DOM is ready
+    setTimeout(doScroll, 400);  // retry after images/fonts may have shifted layout
   }
 
   /* ── Hero entrance animation ─────────────────────────────── */
