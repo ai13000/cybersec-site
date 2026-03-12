@@ -545,6 +545,7 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 .services {
   background: #EEF2FF;
   padding: var(--section-pad) 0;
+  scroll-margin-top: 80px;
 }
 
 .services-grid {

@@ -161,12 +161,12 @@
   const gotoParam = new URLSearchParams(window.location.search).get('goto');
   if (gotoParam) {
     window.addEventListener('load', () => {
-      const target = document.getElementById(gotoParam);
-      if (target) {
-        setTimeout(() => {
-          window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-        }, 100);
-      }
+      setTimeout(() => {
+        const target = document.getElementById(gotoParam);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
     });
   }
 
