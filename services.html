@@ -70,44 +70,6 @@
       grid-template-columns: repeat(3, 1fr);
       margin-top: 56px;
     }
-    .service-card-full {
-      background: var(--white);
-      border-left: 4px solid var(--navy);
-      padding: 48px 40px;
-      position: relative;
-      transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
-      display: flex;
-      flex-direction: column;
-    }
-    .service-card-full::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-left: 4px solid var(--accent);
-      opacity: 0;
-      transition: opacity 0.22s var(--ease);
-    }
-    .service-card-full:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 48px rgba(15,23,42,0.12);
-    }
-    .service-card-full:hover::before { opacity: 1; }
-    .service-card-full .service-role {
-      margin-bottom: 12px;
-    }
-    .service-card-full .service-title {
-      font-size: clamp(18px, 1.8vw, 24px);
-      margin-bottom: 18px;
-    }
-    .service-card-full .service-desc {
-      flex: 1;
-      font-size: 15px;
-      line-height: 1.75;
-      margin-bottom: 32px;
-    }
-    .service-card-full .service-link {
-      align-self: flex-start;
-    }
 
     /* ── CTA Banner ────────────────────────────────────────── */
     .services-cta {
@@ -162,7 +124,7 @@
     }
     @media (max-width: 640px) {
       .services-main .services-grid { grid-template-columns: 1fr; }
-      .service-card-full { padding: 36px 28px; }
+      .service-card { padding: 36px 28px; }
     }
   </style>
 </head>
@@ -219,21 +181,21 @@
 
         <div class="services-grid">
 
-          <article class="service-card-full reveal" aria-labelledby="svc-page1-title">
+          <article class="service-card reveal" aria-labelledby="svc-page1-title">
             <div class="service-role">No commitment required</div>
             <h3 class="service-title" id="svc-page1-title">Free Discovery Call</h3>
             <p class="service-desc">A DevSecOps discovery call is designed to help you understand where you stand today and what it will take to strengthen your security posture.</p>
             <a href="discovery-call.html" class="service-link" aria-label="Book a Free Discovery Call">Book a Call →</a>
           </article>
 
-          <article class="service-card-full reveal" aria-labelledby="svc-page2-title">
+          <article class="service-card reveal" aria-labelledby="svc-page2-title">
             <div class="service-role">For Security Leaders</div>
             <h3 class="service-title" id="svc-page2-title">Core DevSecOps Maturity Assessment</h3>
             <p class="service-desc">We pinpoint your security challenges and deliver a high-impact plan that strengthens your code, fortifies your pipeline, and streamlines your DevSecOps practices.</p>
             <a href="maturity-assessment.html" class="service-link" aria-label="Learn more about Core DevSecOps Maturity Assessment">Learn More →</a>
           </article>
 
-          <article class="service-card-full reveal" aria-labelledby="svc-page3-title">
+          <article class="service-card reveal" aria-labelledby="svc-page3-title">
             <div class="service-role">For DevOps Teams</div>
             <h3 class="service-title" id="svc-page3-title">Tailored CI/CD Pipeline Security Integration</h3>
             <p class="service-desc">We work with your team to integrate security into your CI/CD pipeline, strengthening every stage of delivery and enabling faster, safer releases.</p>
