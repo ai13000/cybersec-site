@@ -157,6 +157,19 @@
     });
   });
 
+  /* ── Scroll-to-section via ?goto= parameter ─────────────── */
+  const gotoParam = new URLSearchParams(window.location.search).get('goto');
+  if (gotoParam) {
+    const target = document.getElementById(gotoParam);
+    if (target) {
+      window.addEventListener('load', () => {
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    }
+  }
+
   /* ── Hero entrance animation ─────────────────────────────── */
   const heroContent = document.querySelector('.hero-content');
   if (heroContent) {
