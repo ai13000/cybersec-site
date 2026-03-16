@@ -175,10 +175,13 @@
     }
     .about-team-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 48px;
     }
+    /* Centre the last 2 cards when 5 items fill a 3-col grid */
+    .about-team-grid .team-card:nth-child(4) { grid-column: 1; }
+    .about-team-grid .team-card:nth-child(5) { grid-column: 2; }
     .team-card {
       background: var(--white);
       border: 1px solid var(--gray-200);
@@ -237,6 +240,8 @@
     /* ── Responsive ────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .about-team-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-team-grid .team-card:nth-child(4),
+      .about-team-grid .team-card:nth-child(5) { grid-column: auto; }
     }
     @media (max-width: 900px) {
       .about-mission-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -247,7 +252,7 @@
       .about-team-grid { grid-template-columns: 1fr; }
     }
   </style>
-  <!-- cache-bust: v4 -->
+  <!-- cache-bust: v5 -->
 </head>
 <body>
 
@@ -389,6 +394,15 @@
               <div class="team-name">Igor Matlin</div>
               <div class="team-role">Application Security Architect</div>
               <p class="team-bio">Application security architect with deep expertise in hardening application defenses and translating security requirements into business-aligned solutions.</p>
+            </div>
+          </a>
+
+          <a class="team-card" href="https://www.linkedin.com/in/lee-sullivan-755b3112/" target="_blank" rel="noopener noreferrer">
+            <img class="team-avatar" src="Lee2.png" alt="Lee Sullivan" />
+            <div class="team-card-body">
+              <div class="team-name">Lee Sullivan</div>
+              <div class="team-role">DevSecOps &amp; Cloud Security Architect</div>
+              <p class="team-bio">Cloud security architect with deep hands-on experience across Azure, AWS, and DevSecOps in regulated and industrial environments.</p>
             </div>
           </a>
 
