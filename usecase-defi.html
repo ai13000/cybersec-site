@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Case: DeFi Secure Feature Delivery — CyberSec Gard</title>
+  <meta name="description" content="How CyberSec Gard transformed a DeFi startup's fragmented security model into a scalable DevSecOps framework — 40% faster delivery, 80% earlier vulnerability detection." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="Logo%20vector.svg" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Hero ───────────────────────────────────────────────── */
+    .uc-hero {
+      background: var(--navy-dark);
+      padding: clamp(80px, 12vh, 140px) 0 clamp(60px, 9vh, 110px);
+      position: relative;
+      overflow: hidden;
+    }
+    .uc-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(64,104,216,0.20) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .uc-hero .container {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+    }
+    .uc-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .uc-hero-tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
+    }
+    .uc-hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(32px, 5vw, 68px);
+      line-height: 1.04;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    .uc-hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .uc-hero-summary {
+      font-size: clamp(15px, 1.4vw, 18px);
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      max-width: 640px;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+    }
+
+    /* ── Overview ───────────────────────────────────────────── */
+    .uc-overview {
+      background: #EEF2FF;
+      padding: clamp(60px, 9vh, 100px) 0;
+    }
+    .uc-overview-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .uc-overview-body {
+      font-size: clamp(15px, 1.3vw, 17px);
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .uc-overview-body + .uc-overview-body { margin-top: 16px; }
+
+    .uc-meta-box {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-top: 4px solid var(--accent);
+      padding: 36px 32px;
+    }
+    .uc-meta-title {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .uc-meta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .uc-meta-item dt {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .uc-meta-item dd {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Challenges ─────────────────────────────────────────── */
+    .uc-challenges {
+      background: var(--white);
+      padding: clamp(60px, 9vh, 100px) 0;
+    }
+    .uc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--gray-200);
+      border: 1px solid var(--gray-200);
+      margin-top: 48px;
+    }
+    .uc-card {
+      background: var(--white);
+      padding: 36px 32px;
+      transition: background 0.25s var(--ease);
+    }
+    .uc-card:hover { background: #f4f7ff; }
+    .uc-card-num {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .uc-card-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .uc-card-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Solutions ──────────────────────────────────────────── */
+    .uc-solutions {
+      background: #EEF2FF;
+      padding: clamp(60px, 9vh, 100px) 0;
+    }
+    .uc-solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--gray-200);
+      border: 1px solid var(--gray-200);
+      margin-top: 48px;
+    }
+    .uc-sol-card {
+      background: var(--white);
+      padding: 40px 36px;
+      transition: background 0.25s var(--ease);
+    }
+    .uc-sol-card:hover { background: #f4f7ff; }
+    .uc-sol-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--navy);
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .uc-sol-icon svg { width: 20px; height: 20px; stroke: var(--white); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .uc-sol-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .uc-sol-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Results ────────────────────────────────────────────── */
+    .uc-results {
+      background: var(--navy-dark);
+      padding: clamp(60px, 9vh, 100px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .uc-results::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 15% 50%, rgba(64,104,216,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .uc-results .container { position: relative; z-index: 1; }
+    .uc-results .section-title { color: var(--white); }
+    .uc-results .section-label { color: rgba(122,158,232,0.85); }
+
+    .uc-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 48px;
+      margin-bottom: 64px;
+    }
+    .uc-metric {
+      background: rgba(255,255,255,0.04);
+      padding: 40px 36px;
+      text-align: center;
+      transition: background 0.25s var(--ease);
+    }
+    .uc-metric:hover { background: rgba(255,255,255,0.08); }
+    .uc-metric-num {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(36px, 4vw, 56px);
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .uc-metric-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+      max-width: 200px;
+      margin-inline: auto;
+    }
+
+    .uc-before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 0;
+    }
+    .uc-ba-col {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 36px 32px;
+    }
+    .uc-ba-col.after {
+      border-color: rgba(64,104,216,0.5);
+      background: rgba(64,104,216,0.08);
+    }
+    .uc-ba-heading {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .uc-ba-col:not(.after) .uc-ba-heading { color: rgba(255,255,255,0.35); }
+    .uc-ba-col.after .uc-ba-heading { color: var(--accent); }
+    .uc-ba-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .uc-ba-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .uc-ba-col:not(.after) .uc-ba-item { color: rgba(255,255,255,0.5); }
+    .uc-ba-col.after .uc-ba-item { color: rgba(255,255,255,0.85); }
+    .uc-ba-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .uc-ba-col:not(.after) .uc-ba-dot { background: rgba(255,255,255,0.25); }
+    .uc-ba-col.after .uc-ba-dot { background: var(--accent); }
+
+    /* ── CTA ────────────────────────────────────────────────── */
+    .uc-cta {
+      background: #EEF2FF;
+      padding: clamp(60px, 9vh, 100px) 0;
+      text-align: center;
+    }
+    .uc-cta .section-title { max-width: 600px; margin-inline: auto; }
+    .uc-cta-sub {
+      font-size: clamp(15px, 1.3vw, 17px);
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 16px auto 40px;
+    }
+    .uc-cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .uc-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .uc-overview-inner { grid-template-columns: 1fr; gap: 40px; }
+      .uc-solutions-grid { grid-template-columns: 1fr; }
+      .uc-before-after { grid-template-columns: 1fr; }
+      .uc-metrics { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .uc-grid { grid-template-columns: 1fr; }
+      .uc-metrics { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="nav-wrapper" id="nav" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="CyberSec Gard home">
+        <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="72" height="72" />
+        <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+      </a>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <a href="contact.html" class="nav-cta" aria-label="Schedule a consultation">Schedule a Call</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="uc-hero" aria-labelledby="uc-hero-title">
+      <div class="container">
+        <div class="uc-hero-tag">Use Case &mdash; DeFi / FinTech</div>
+        <h1 class="uc-hero-title" id="uc-hero-title">
+          Secure &amp; Rapid<br/>
+          Feature Delivery for<br/>
+          a <em>DeFi</em> Startup
+        </h1>
+        <p class="uc-hero-summary">
+          A fragmented DeFi startup's security model was transformed into a scalable DevSecOps framework — embedding automated smart contract testing, dependency scanning, and policy-as-code governance into the CI/CD pipeline, accelerating innovation while reducing protocol risk.
+        </p>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="uc-overview" aria-labelledby="uc-overview-title">
+      <div class="container">
+        <div class="uc-overview-inner">
+
+          <div>
+            <div class="section-label" aria-hidden="true">Client Overview</div>
+            <h2 class="section-title" id="uc-overview-title">
+              Speed without<br/>
+              <span class="title-muted">sacrificing security.</span>
+            </h2>
+            <p class="uc-overview-body">
+              A fast-growing DeFi startup offered a suite of applications — including lending, yield farming, and token exchange protocols — built on the Ethereum Virtual Machine (EVM). The competitive nature of the DeFi space demanded continuous and rapid iteration, with new features and protocol upgrades being deployed weekly to capture market share.
+            </p>
+            <p class="uc-overview-body">
+              The core challenge was maintaining the highest standard of smart contract and application security while achieving this breakneck pace of development. A single security vulnerability could lead to the immediate loss of millions in user funds and irreversible reputational damage.
+            </p>
+            <p class="uc-overview-body">
+              The organization needed to implement a security-first development approach to accelerate feature delivery and respond to market demands without increasing the risk of catastrophic security flaws.
+            </p>
+          </div>
+
+          <div>
+            <div class="uc-meta-box">
+              <div class="uc-meta-title">Engagement Details</div>
+              <dl class="uc-meta-row">
+                <div class="uc-meta-item">
+                  <dt>Industry</dt>
+                  <dd>Decentralized Finance (DeFi) / FinTech</dd>
+                </div>
+                <div class="uc-meta-item">
+                  <dt>Platform</dt>
+                  <dd>Ethereum Virtual Machine (EVM)</dd>
+                </div>
+                <div class="uc-meta-item">
+                  <dt>Core Challenge</dt>
+                  <dd>Balancing weekly protocol deployments with rigorous smart contract security and compliance</dd>
+                </div>
+                <div class="uc-meta-item">
+                  <dt>Services Delivered</dt>
+                  <dd>DevSecOps Transformation, CI/CD Security Integration, Shift-Left Training, Compliance Automation</dd>
+                </div>
+                <div class="uc-meta-item">
+                  <dt>Published</dt>
+                  <dd>June 2025</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CHALLENGES -->
+    <section class="uc-challenges" aria-labelledby="uc-challenges-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">The Problem</div>
+        <h2 class="section-title" id="uc-challenges-title">
+          Six challenges blocking<br/>
+          <span class="title-muted">secure delivery.</span>
+        </h2>
+
+        <div class="uc-grid">
+
+          <div class="uc-card">
+            <div class="uc-card-num">01</div>
+            <h3 class="uc-card-title">Speed vs. Security Trade-off</h3>
+            <p class="uc-card-body">Developers frequently bypassed thorough manual security reviews and formal audits to meet aggressive feature release timelines, leading to rushed code and unpatched vulnerabilities.</p>
+          </div>
+
+          <div class="uc-card">
+            <div class="uc-card-num">02</div>
+            <h3 class="uc-card-title">Late-Stage Security Audits</h3>
+            <p class="uc-card-body">Formal smart contract audits by external firms were conducted immediately before deployment. Critical bugs found late required significant, costly rework and delayed protocol launches.</p>
+          </div>
+
+          <div class="uc-card">
+            <div class="uc-card-num">03</div>
+            <h3 class="uc-card-title">Complex Attack Surface</h3>
+            <p class="uc-card-body">The application involved multiple attack vectors — smart contract logic, backend APIs, front-end wallet integrations, and third-party oracle dependencies. Each new dependency increased the potential for cascading failure.</p>
+          </div>
+
+          <div class="uc-card">
+            <div class="uc-card-num">04</div>
+            <h3 class="uc-card-title">No Continuous Vulnerability Scanning</h3>
+            <p class="uc-card-body">Dependency updates in node modules and third-party protocol integrations were not continuously monitored for known vulnerabilities, leaving the application exposed to supply chain attacks.</p>
+          </div>
+
+          <div class="uc-card">
+            <div class="uc-card-num">05</div>
+            <h3 class="uc-card-title">Inconsistent Deployment Integrity</h3>
+            <p class="uc-card-body">Managing deployment keys, multisig wallet policies, and secure CI/CD pipelines lacked standardization — increasing the risk of unauthorized or tampered code being deployed to mainnet.</p>
+          </div>
+
+          <div class="uc-card">
+            <div class="uc-card-num">06</div>
+            <h3 class="uc-card-title">Siloed Teams &amp; Knowledge Gaps</h3>
+            <p class="uc-card-body">Smart contract engineers, backend developers, and security experts operated independently. Security was viewed as a gate to pass rather than a shared, continuous responsibility across the lifecycle.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section class="uc-solutions" aria-labelledby="uc-solutions-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">What We Did</div>
+        <h2 class="section-title" id="uc-solutions-title">
+          A tailored DevSecOps<br/>
+          <span class="title-muted">transformation.</span>
+        </h2>
+
+        <div class="uc-solutions-grid">
+
+          <div class="uc-sol-card">
+            <div class="uc-sol-icon">
+              <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="uc-sol-title">Security Integrated into CI/CD Pipelines</h3>
+            <p class="uc-sol-body">Automated Static Application Security Testing (SAST) and dynamic analysis tools specialized for smart contracts — including formal verification — were embedded directly into the Git workflow, running checks on every pull request.</p>
+          </div>
+
+          <div class="uc-sol-card">
+            <div class="uc-sol-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 class="uc-sol-title">Automated Dependency &amp; Secret Management</h3>
+            <p class="uc-sol-body">Automated scanning for vulnerable third-party dependencies and open-source libraries was implemented. Secure secret management and rotation for all API keys, database credentials, and deployment private keys were standardized across the organization.</p>
+          </div>
+
+          <div class="uc-sol-card">
+            <div class="uc-sol-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="uc-sol-title">Standardized Deployment Governance</h3>
+            <p class="uc-sol-body">A policy-as-code approach ensured only peer-reviewed and automatically scanned code could be deployed. All mainnet deployments required multisig approval and were executed via immutable CI/CD pipelines, eliminating unauthorized changes.</p>
+          </div>
+
+          <div class="uc-sol-card">
+            <div class="uc-sol-icon">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3 class="uc-sol-title">Shift-Left Security Training</h3>
+            <p class="uc-sol-body">Developers received practical, continuous training on common smart contract exploits — reentrancy, integer overflow, and secure API design — enabling them to prevent flaws at the point of authorship rather than catching them at audit time.</p>
+          </div>
+
+          <div class="uc-sol-card">
+            <div class="uc-sol-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3 class="uc-sol-title">Continuous Security &amp; Compliance Monitoring</h3>
+            <p class="uc-sol-body">Security controls, logging, and policy enforcement aligned with financial compliance best practices — including SOC 2 readiness — were embedded. On-chain monitoring tools provided immediate alerts on suspicious protocol behavior.</p>
+          </div>
+
+          <div class="uc-sol-card">
+            <div class="uc-sol-icon">
+              <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </div>
+            <h3 class="uc-sol-title">Automated Audit Evidence</h3>
+            <p class="uc-sol-body">Every commit and deployment automatically generated a detailed record of all security checks, code changes, and audit logs — making compliance evidence generation instantaneous, transparent, and eliminating weeks of manual gathering per audit cycle.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="uc-results" aria-labelledby="uc-results-title">
+      <div class="container">
+        <div class="section-label light" aria-hidden="true">Outcomes</div>
+        <h2 class="section-title" id="uc-results-title">
+          Measurable results,<br/>
+          <span style="color:rgba(255,255,255,0.35);">not just a report.</span>
+        </h2>
+
+        <div class="uc-metrics" aria-label="Key outcome metrics">
+          <div class="uc-metric">
+            <div class="uc-metric-num">40%</div>
+            <div class="uc-metric-label">Faster time-to-market for new features</div>
+          </div>
+          <div class="uc-metric">
+            <div class="uc-metric-num">80%</div>
+            <div class="uc-metric-label">Earlier detection of smart contract vulnerabilities</div>
+          </div>
+        </div>
+
+        <div class="uc-before-after">
+
+          <div class="uc-ba-col">
+            <div class="uc-ba-heading">Before</div>
+            <ul class="uc-ba-list" role="list">
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Unpredictable, risky release cycles due to manual security bottlenecks</li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Critical vulnerabilities discovered late, causing emergency mainnet patches and downtime</li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Continuous exposure to known vulnerabilities in third-party libraries</li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Manual, time-consuming compliance and proof-of-solvency evidence gathering</li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Inconsistent security practices for key and secrets management</li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Security team viewed as a roadblock, not a partner</li>
+            </ul>
+          </div>
+
+          <div class="uc-ba-col after">
+            <div class="uc-ba-heading">After</div>
+            <ul class="uc-ba-list" role="list">
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span><span><strong>40% faster time-to-market</strong> for new features, safely accelerating iteration</span></li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span><span><strong>80% earlier detection</strong> of smart contract vulnerabilities, reducing costly external audits and reworks</span></li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Continuous compliance readiness with automated audit trails and security evidence</li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Standardized, secure deployment and governance procedures for all protocol upgrades</li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Improved collaboration and a shared "security-first" culture across all engineering teams</li>
+              <li class="uc-ba-item"><span class="uc-ba-dot" aria-hidden="true"></span>Increased developer confidence, leading to more innovative and reliable protocol development</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="uc-cta" aria-labelledby="uc-cta-title">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">Work With Us</div>
+        <h2 class="section-title" id="uc-cta-title">
+          Ready to ship fast<br/>
+          <span class="title-muted">without the risk?</span>
+        </h2>
+        <p class="uc-cta-sub">
+          Whether you're in DeFi, fintech, or any fast-moving space — we'll embed security into your pipeline so your team ships with confidence, not anxiety.
+        </p>
+        <div class="uc-cta-actions">
+          <a href="contact.html" class="btn btn-primary">Schedule a Call</a>
+          <a href="services.html" class="btn btn-outline">View Our Services</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo footer-logo" aria-label="CyberSec Gard home">
+            <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="40" height="40" />
+            <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+          </a>
+          <p class="footer-tagline">Your trusted guide on the DevSecOps journey — delivering expert solutions that bridge development, security, and operations with confidence.</p>
+          <div class="footer-social" aria-label="Social links">
+            <a href="https://www.linkedin.com/company/cybersec-gard" target="_blank" rel="noopener noreferrer" class="footer-social-link">LinkedIn</a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-labelledby="footer-services-label">
+          <h4 class="footer-nav-title" id="footer-services-label">Services</h4>
+          <ul role="list">
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="discovery-call.html">Free Discovery Call</a></li>
+            <li><a href="maturity-assessment.html">Core DevSecOps Maturity Assessment</a></li>
+            <li><a href="cicd-security.html">Tailored CI/CD Pipeline Security Integration</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-labelledby="footer-company-label">
+          <h4 class="footer-nav-title" id="footer-company-label">Company</h4>
+          <ul role="list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-contact" id="footer-contact-label">
+          <h4 class="footer-nav-title">Contact</h4>
+          <address>
+            <p><a href="mailto:info@cybersecgard.com">info@cybersecgard.com</a></p>
+            <p><a href="tel:+13142283004">+1 (314) 228-3004</a></p>
+            <p>St. Louis, MO<br/>United States</p>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">2026 CyberSec Gard.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
