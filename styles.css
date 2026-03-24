@@ -313,19 +313,23 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 .nav-hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
-  padding: 8px;
+  gap: 6px;
+  padding: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 .nav-hamburger span {
   display: block;
-  width: 22px;
+  width: 26px;
   height: 2px;
   background: var(--white);
   transition: transform 0.3s var(--ease), opacity 0.3s;
+  border-radius: 2px;
 }
-.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 /* ═══════════════════════════════════════════════════════════
    HERO
@@ -1170,14 +1174,10 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   RESPONSIVE — MOBILE
+   RESPONSIVE — NAV HAMBURGER (shows on tablet + mobile)
    ═══════════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-hamburger { display: flex; }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
 
   .nav-links {
     position: fixed;
@@ -1188,9 +1188,10 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
     background: var(--navy-dark);
     flex-direction: column;
     align-items: stretch;
-    padding: 20px;
+    padding: 20px 24px;
     gap: 4px;
     border-top: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
     transform: translateY(-110%);
     opacity: 0;
     pointer-events: none;
@@ -1202,12 +1203,14 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
     pointer-events: all;
   }
   .nav-link {
-    padding: 14px 16px;
+    padding: 15px 16px;
     font-size: 14px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.75);
   }
+  .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.04); }
   .nav-link::after { display: none; }
-  .nav-cta-item { margin-top: 8px; }
+  .nav-cta-item { margin-top: 10px; }
   .nav-cta {
     display: block;
     margin-left: 0;
@@ -1215,6 +1218,15 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
     text-align: center;
     width: 100%;
     box-sizing: border-box;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 
   .hero-content  { min-height: auto; align-items: flex-start; }
