@@ -349,6 +349,19 @@
       .ma-domains-grid { grid-template-columns: 1fr; }
       .ma-process-steps { grid-template-columns: 1fr; }
     }
+
+    /* ── Mobile (≤768px) ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .ma-hero .container { grid-template-columns: 1fr; gap: 36px; }
+      .ma-hero-panel { padding: 24px 20px 28px; }
+      .ma-domains-grid { grid-template-columns: 1fr; }
+      .ma-process-steps { grid-template-columns: 1fr; gap: 32px; }
+      .ma-process-steps::before { display: none; }
+      .ma-deliver-grid { grid-template-columns: 1fr; }
+      .ma-deliver-item { padding: 24px 20px; }
+      .ma-standalone-inner { grid-template-columns: 1fr; gap: 36px; }
+      .ma-domain-card { padding: 28px 24px 32px; }
+    }
   </style>
   <!-- cache-bust: v4 -->
 </head>

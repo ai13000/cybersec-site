@@ -252,6 +252,15 @@
       .about-stats { grid-template-columns: 1fr 1fr; }
       .about-team-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── Mobile (≤768px) ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .about-team-grid { grid-template-columns: 1fr; }
+      .about-team-grid .team-card:nth-child(4),
+      .about-team-grid .team-card:nth-child(5) { grid-column: auto; }
+      .about-value-item { padding: 28px 24px; }
+      .about-mission-inner { grid-template-columns: 1fr; gap: 36px; }
+    }
   </style>
   <!-- cache-bust: v5 -->
 </head>

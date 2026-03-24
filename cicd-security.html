@@ -489,6 +489,18 @@
       .ci-build-grid { grid-template-columns: 1fr; }
       .ci-bridge-inner { flex-direction: column; align-items: flex-start; }
     }
+
+    /* ── Mobile (≤768px) ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .ci-hero .container { grid-template-columns: 1fr; gap: 36px; }
+      .ci-hero-panel { padding: 24px 20px 28px; }
+      .ci-build-grid { grid-template-columns: 1fr; }
+      .ci-bridge-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .ci-outcomes-grid { grid-template-columns: 1fr; }
+      .ci-outcome { padding: 24px 24px; }
+      .ci-build-card { padding: 22px 20px 26px; }
+      .ci-step { gap: 20px; }
+    }
   </style>
   <!-- cache-bust: v5 -->
 </head>
