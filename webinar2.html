@@ -43,14 +43,14 @@
       inset: 0;
       background:
         linear-gradient(to bottom,
-          rgba(9,18,36,0.10)  0%,
-          rgba(9,18,36,0.30) 38%,
-          rgba(9,18,36,0.82) 68%,
-          rgba(9,18,36,0.97) 100%
+          rgba(9,18,36,0.08)  0%,
+          rgba(9,18,36,0.25) 35%,
+          rgba(9,18,36,0.80) 62%,
+          rgba(9,18,36,0.96) 100%
         ),
         linear-gradient(to right,
-          rgba(9,18,36,0.55) 0%,
-          transparent        55%
+          rgba(9,18,36,0.50) 0%,
+          transparent        50%
         );
       pointer-events: none;
     }
@@ -58,22 +58,30 @@
     .hero-body {
       position: relative;
       z-index: 2;
-      margin-top: auto;           /* push content to bottom */
+      margin-top: auto;
       padding: 80px clamp(20px,5vw,60px) clamp(56px,8vh,96px);
       max-width: calc(var(--container) + 120px);
       margin-inline: auto;
       width: 100%;
+      /* two-column layout: label stack left, chip+cta right */
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto auto auto;
+      column-gap: 48px;
+      align-items: end;
     }
 
-    /* event badge */
+    /* badge spans full width above the grid columns */
     .h-badge {
+      grid-column: 1 / -1;
       display: inline-flex;
       align-items: center;
       gap: 9px;
       background: rgba(64,104,216,0.18);
       border: 1px solid rgba(64,104,216,0.38);
       padding: 6px 14px 6px 10px;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
+      width: fit-content;
     }
     .h-badge-dot {
       width: 8px;
@@ -92,54 +100,73 @@
       color: rgba(255,255,255,0.82);
     }
 
-    /* title */
+    /* title — left column, rows 2-3 */
     .h-title {
+      grid-column: 1;
+      grid-row: 2 / 4;
       font-family: var(--font-head);
       font-weight: 900;
-      font-size: clamp(34px, 5.8vw, 80px);
-      line-height: 0.98;
-      letter-spacing: -0.025em;
+      font-size: clamp(28px, 4.2vw, 62px);
+      line-height: 1.03;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
       color: var(--white);
-      margin-bottom: 10px;
-      max-width: 860px;
+      margin-bottom: 0;
+      max-width: 720px;
+      align-self: end;
     }
     .h-title em {
       font-style: normal;
       color: var(--accent);
     }
 
+    /* subtitle — left column, row 4 */
     .h-sub {
+      grid-column: 1;
+      grid-row: 4;
       font-family: var(--font-head);
-      font-size: clamp(14px, 1.5vw, 18px);
+      font-size: clamp(13px, 1.3vw, 16px);
       font-weight: 600;
-      letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.50);
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.45);
       text-transform: uppercase;
-      margin-bottom: 36px;
+      margin-top: 14px;
+      margin-bottom: 0;
+    }
+
+    /* meta + cta — right column, rows 2-4, bottom-aligned */
+    .h-right {
+      grid-column: 2;
+      grid-row: 2 / 5;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+      gap: 12px;
     }
 
     /* meta row */
     .h-meta {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 40px;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
     }
     .h-chip {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      border: 1px solid rgba(255,255,255,0.18);
-      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 7px 14px;
       font-family: var(--font-head);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.68);
       backdrop-filter: blur(4px);
       background: rgba(255,255,255,0.05);
+      white-space: nowrap;
     }
     .h-chip svg {
       width: 13px;
@@ -470,7 +497,14 @@
 
     @media (max-width: 768px) {
       .hero-wrap { min-height: 85vh; }
-      .h-title { font-size: clamp(32px, 9vw, 52px); }
+      .hero-body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .h-title { grid-column: 1; grid-row: auto; font-size: clamp(28px, 8vw, 48px); }
+      .h-sub   { grid-column: 1; grid-row: auto; }
+      .h-right { grid-column: 1; grid-row: auto; align-items: flex-start; margin-top: 24px; }
+      .h-meta  { flex-direction: row; flex-wrap: wrap; }
       .sp-inner { grid-template-columns: 1fr; gap: 24px; }
       .sp-img { max-width: 140px; }
       .bottom-cta .container {
@@ -501,7 +535,7 @@
         <li><a href="services.html" class="nav-link">Services</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
         <li class="nav-cta-item">
-          <a href="#register" class="nav-cta" aria-label="Register for the webinar">Register Now</a>
+          <a href="https://live.zoho.eu/rutn-cem-wkb" target="_blank" rel="noopener noreferrer" class="nav-cta" aria-label="Register for the webinar">Register Now</a>
         </li>
       </ul>
     </nav>
@@ -520,29 +554,35 @@
       />
 
       <div class="hero-body">
+        <!-- date badge — full width -->
         <div class="h-badge">
           <div class="h-badge-dot" aria-hidden="true"></div>
-          <span class="h-badge-text">Webinar &nbsp;·&nbsp; Thursday, April 9 &nbsp;·&nbsp; 1:00 PM ET</span>
+          <span class="h-badge-text">Thursday, April 9 &nbsp;·&nbsp; 1:00 PM ET</span>
         </div>
 
+        <!-- title — left -->
         <h1 class="h-title" id="wb-title">
           Join Us to Talk<br/>Software Supply<br/>Chain <em>Security</em>
         </h1>
+
+        <!-- subtitle — left, below title -->
         <p class="h-sub">Expert Webinar with Live Q&amp;A</p>
 
-        <div class="h-meta" aria-label="Session details">
-          <div class="h-chip">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-            30 Minutes
+        <!-- chips + CTA — right column -->
+        <div class="h-right">
+          <div class="h-meta" aria-label="Session details">
+            <div class="h-chip">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              30 Minutes
+            </div>
+            <div class="h-chip">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.1 4.18 2 2 0 0 1 4.09 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Live Q&amp;A
+            </div>
           </div>
-          <div class="h-chip">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.1 4.18 2 2 0 0 1 4.09 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Live Q&amp;A
-          </div>
+          <!-- CTA #1 — visible on page load -->
+          <a href="https://live.zoho.eu/rutn-cem-wkb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Register for the Webinar</a>
         </div>
-
-        <!-- CTA #1 — visible on page load -->
-        <a href="#register" class="btn btn-primary">Register for the Webinar</a>
       </div>
     </section>
 
@@ -641,7 +681,7 @@
 
             <div class="sc-divider"></div>
 
-            <a href="#register" class="btn btn-primary" style="display:block;text-align:center;width:100%;box-sizing:border-box;">
+            <a href="https://live.zoho.eu/rutn-cem-wkb" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:block;text-align:center;width:100%;box-sizing:border-box;">
               Register Now
             </a>
           </aside>
@@ -683,7 +723,7 @@
           </h2>
         </div>
         <div class="bc-right">
-          <a href="contact.html" class="btn btn-cta-primary">Reserve My Spot</a>
+          <a href="https://live.zoho.eu/rutn-cem-wkb" target="_blank" rel="noopener noreferrer" class="btn btn-cta-primary">Reserve My Spot</a>
           <div class="bc-pills" aria-label="Session details">
             <div class="bc-pill">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
