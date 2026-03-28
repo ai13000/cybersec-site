@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webinar: Software Supply Chain Security — CyberSec Gard</title>
+  <meta name="description" content="Software Supply Chain Security: A Survival Guide. Live webinar for AppSec and security engineers — Thursday, April 9 · 1:00 PM ET. Complimentary · 30 Minutes · Live Q&A." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+    .wb-hero {
+      position: relative;
+      background: var(--navy-dark);
+      overflow: hidden;
+    }
+    .wb-hero-img {
+      width: 100%;
+      max-height: 680px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .wb-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(9,18,36,0.20) 0%,
+        rgba(9,18,36,0.45) 55%,
+        rgba(9,18,36,0.92) 100%
+      );
+      pointer-events: none;
+    }
+    .wb-hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: clamp(32px, 5vw, 64px) 0 clamp(48px, 7vw, 80px);
+    }
+    .wb-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .wb-hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .wb-hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(28px, 5vw, 66px);
+      line-height: 1.03;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .wb-hero-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .wb-hero-subtitle {
+      font-family: var(--font-head);
+      font-size: clamp(14px, 1.6vw, 18px);
+      font-weight: 600;
+      color: rgba(255,255,255,0.70);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+    }
+    .wb-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+    .wb-meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 7px 14px;
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.80);
+      backdrop-filter: blur(6px);
+    }
+    .wb-meta-chip svg {
+      width: 13px;
+      height: 13px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* ── Section shared ──────────────────────────────────────── */
+    .wb-eye {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .wb-h2 {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(22px, 2.8vw, 36px);
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 22px;
+    }
+    .wb-body {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.82;
+    }
+    .wb-body strong {
+      color: rgba(255,255,255,0.88);
+      font-weight: 600;
+    }
+    .wb-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+
+    /* ── About ───────────────────────────────────────────────── */
+    .wb-about {
+      background: var(--navy-dark);
+      padding: clamp(64px, 10vh, 112px) 0;
+    }
+    .wb-about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* ── Learn list ──────────────────────────────────────────── */
+    .wb-learn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 4px;
+    }
+    .wb-learn-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .wb-check {
+      width: 22px;
+      height: 22px;
+      background: rgba(64,104,216,0.16);
+      border: 1px solid rgba(64,104,216,0.38);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .wb-check svg {
+      width: 11px;
+      height: 11px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .wb-learn-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.65;
+    }
+    .wb-learn-text strong {
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px;
+      font-size: 15px;
+    }
+
+    /* ── Speaker ─────────────────────────────────────────────── */
+    .wb-speaker {
+      background: var(--navy);
+      padding: clamp(56px, 9vh, 104px) 0;
+    }
+    .wb-speaker-inner {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 720px;
+      margin: 48px auto 0;
+    }
+    .wb-speaker-img {
+      width: 100%;
+      display: block;
+      border-top: 4px solid var(--accent);
+    }
+    .wb-speaker-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .wb-speaker-name {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(22px, 2.4vw, 30px);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .wb-speaker-role {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 4px;
+    }
+    .wb-speaker-org {
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+    }
+
+    /* ── Bottom CTA ──────────────────────────────────────────── */
+    .wb-cta {
+      background: var(--navy-dark);
+      padding: clamp(72px, 11vh, 128px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .wb-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 70% at 50% 50%, rgba(64,104,216,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .wb-cta .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 640px;
+    }
+    .wb-cta-eye {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .wb-cta-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(28px, 4vw, 52px);
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.06;
+      margin-bottom: 18px;
+    }
+    .wb-cta-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .wb-cta-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.72;
+      margin-bottom: 36px;
+    }
+    .wb-cta-pills {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .wb-cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 8px 16px;
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.60);
+    }
+    .wb-cta-pill svg {
+      width: 13px;
+      height: 13px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── Mobile ──────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .wb-hero-img { max-height: 420px; }
+      .wb-hero-content { padding-bottom: clamp(36px, 6vw, 56px); }
+      .wb-about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .wb-speaker-inner { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+      .wb-speaker-img { max-width: 160px; margin: 0 auto; }
+      .wb-hero-meta { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════ -->
+  <header class="nav-wrapper" id="nav" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="CyberSec Gard home">
+        <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="72" height="72" />
+        <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+      </a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-cta-item"><a href="#register" class="nav-cta" aria-label="Register for the webinar">Register Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════
+         HERO — full-width image with overlaid text
+    ═══════════════════════════════════════════════ -->
+    <section class="wb-hero" aria-labelledby="wb-title">
+      <img
+        src="Webinas%20logo%20updated2.png"
+        alt="Software Supply Chain Security Webinar"
+        class="wb-hero-img"
+      />
+      <div class="wb-hero-overlay" aria-hidden="true"></div>
+      <div class="wb-hero-content">
+        <div class="container">
+          <div class="wb-hero-eyebrow">Webinar · Thursday, April 9</div>
+          <h1 class="wb-hero-title" id="wb-title">
+            Software Supply<br/>Chain <em>Security</em>
+          </h1>
+          <p class="wb-hero-subtitle">A Survival Guide</p>
+          <div class="wb-hero-meta" aria-label="Event details">
+            <div class="wb-meta-chip">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              1:00 PM ET
+            </div>
+            <div class="wb-meta-chip">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.1 4.18 2 2 0 0 1 4.09 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Live Q&amp;A
+            </div>
+            <div class="wb-meta-chip">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              30 Minutes
+            </div>
+            <div class="wb-meta-chip">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              Complimentary
+            </div>
+          </div>
+          <a href="#register" class="btn btn-primary">Register for the Webinar — It's Free</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         ABOUT THE SESSION
+    ═══════════════════════════════════════════════ -->
+    <section class="wb-about" aria-labelledby="wb-about-h">
+      <div class="container">
+        <div class="wb-about-grid">
+
+          <div class="reveal">
+            <div class="wb-eye">About This Session</div>
+            <h2 class="wb-h2" id="wb-about-h">
+              80% of your app is code<br/>you didn't write
+            </h2>
+            <p class="wb-body">
+              Most modern applications are <strong>80% third-party code</strong> — libraries, packages, and transitive dependencies your team didn't write and may never have reviewed. That's the new attack surface.
+            </p>
+            <p class="wb-body" style="margin-top: 18px;">
+              SolarWinds, Log4j, and the recent Trivy and Checkmarx GitHub Actions compromises <strong>didn't touch a single line of custom code.</strong> They compromised what your code depends on.
+            </p>
+            <p class="wb-body" style="margin-top: 18px;">
+              This session is for AppSec and security engineers who are done scanning and ready to <strong>actually manage supply chain risk</strong> — with tools, frameworks, and a response playbook they can use the same week.
+            </p>
+          </div>
+
+          <div class="reveal">
+            <div class="wb-eye">What You'll Learn</div>
+            <h2 class="wb-h2" style="font-size: clamp(18px, 2vw, 26px); margin-bottom: 28px;">
+              Walk away with a playbook,<br/>not just slides
+            </h2>
+            <ul class="wb-learn-list" role="list">
+              <li class="wb-learn-item">
+                <div class="wb-check" aria-hidden="true">
+                  <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+                </div>
+                <div class="wb-learn-text">
+                  <strong>Turn your SBOM into an incident response tool</strong>
+                  Not just a compliance document — make it operational.
+                </div>
+              </li>
+              <li class="wb-learn-item">
+                <div class="wb-check" aria-hidden="true">
+                  <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+                </div>
+                <div class="wb-learn-text">
+                  <strong>Harden your CI/CD pipeline beyond the dependency scanner</strong>
+                  The hardening step most teams overlook entirely.
+                </div>
+              </li>
+              <li class="wb-learn-item">
+                <div class="wb-check" aria-hidden="true">
+                  <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+                </div>
+                <div class="wb-learn-text">
+                  <strong>Vet open-source libraries before they reach your codebase</strong>
+                  A repeatable three-step process you can apply immediately.
+                </div>
+              </li>
+              <li class="wb-learn-item">
+                <div class="wb-check" aria-hidden="true">
+                  <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+                </div>
+                <div class="wb-learn-text">
+                  <strong>Execute the three immediate actions when a dependency is compromised</strong>
+                  Isolate, freeze, rotate — in the right order.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="wb-divider" aria-hidden="true"></div>
+
+    <!-- ═══════════════════════════════════════════════
+         FEATURED SPEAKER
+    ═══════════════════════════════════════════════ -->
+    <section class="wb-speaker" aria-labelledby="wb-speaker-h">
+      <div class="container">
+        <div style="text-align: center;" class="reveal">
+          <div class="wb-eye">Featured Speaker</div>
+          <h2 class="wb-h2" id="wb-speaker-h" style="margin-bottom: 0;">
+            Meet Your Host
+          </h2>
+        </div>
+        <div class="wb-speaker-inner reveal">
+          <div class="wb-speaker-photo">
+            <img
+              src="Webinas%20logo%20updated2.png"
+              alt="Igor Matlin — Application Security Architect, CyberSec Gard"
+              class="wb-speaker-img"
+            />
+          </div>
+          <div class="wb-speaker-info">
+            <div class="wb-speaker-label">Speaker</div>
+            <h3 class="wb-speaker-name" id="wb-speaker-h">Igor Matlin</h3>
+            <div class="wb-speaker-role">Application Security Architect</div>
+            <div class="wb-speaker-org">CyberSec Gard</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wb-divider" aria-hidden="true"></div>
+
+    <!-- ═══════════════════════════════════════════════
+         BOTTOM CTA — REGISTRATION
+    ═══════════════════════════════════════════════ -->
+    <section class="wb-cta" id="register" aria-labelledby="wb-cta-h">
+      <div class="container">
+        <div class="wb-cta-eye">Free · Thursday, April 9 · 1:00 PM ET</div>
+        <h2 class="wb-cta-title" id="wb-cta-h">
+          Register for<br/>the <em>Webinar</em>
+        </h2>
+        <p class="wb-cta-sub">
+          A focused 30-minute session built for security engineers who need actionable tools — not another overview deck. Includes live Q&amp;A.
+        </p>
+        <div class="wb-cta-pills" aria-label="Session details">
+          <div class="wb-cta-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            30 Minutes
+          </div>
+          <div class="wb-cta-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.1 4.18 2 2 0 0 1 4.09 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Live Q&amp;A
+          </div>
+          <div class="wb-cta-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+            Complimentary
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-cta-primary">Reserve My Spot</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo footer-logo" aria-label="CyberSec Gard home">
+            <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="40" height="40" />
+            <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+          </a>
+          <p class="footer-tagline">Your trusted guide on the DevSecOps journey — delivering expert solutions that bridge development, security, and operations with confidence.</p>
+          <div class="footer-social" aria-label="Social links">
+            <a href="https://www.linkedin.com/company/cybersec-gard" target="_blank" rel="noopener noreferrer" class="footer-social-link">LinkedIn</a>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-labelledby="footer-services-label">
+          <h4 class="footer-nav-title" id="footer-services-label">Services</h4>
+          <ul role="list">
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="discovery-call.html">Free Discovery Call</a></li>
+            <li><a href="maturity-assessment.html">Core DevSecOps Maturity Assessment</a></li>
+            <li><a href="cicd-security.html">Tailored CI/CD Pipeline Security Integration</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-nav" aria-labelledby="footer-company-label">
+          <h4 class="footer-nav-title" id="footer-company-label">Company</h4>
+          <ul role="list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer-contact">
+          <h4 class="footer-nav-title">Contact</h4>
+          <address>
+            <p><a href="mailto:info@cybersecgard.com">info@cybersecgard.com</a></p>
+            <p><a href="tel:+13142283004">+1 (314) 228-3004</a></p>
+            <p>St. Louis, MO<br/>United States</p>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">2026 CyberSec Gard.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
