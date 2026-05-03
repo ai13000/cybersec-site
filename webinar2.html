@@ -513,6 +513,179 @@
       }
       .bc-right { align-items: flex-start; }
     }
+
+    /* ─────────────────────────────────────────────
+       REGISTRATION MODAL
+    ───────────────────────────────────────────── */
+    .reg-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 18, 36, 0.82);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s var(--ease);
+    }
+    .reg-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .reg-modal {
+      background: #0e1e38;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-top: 3px solid var(--accent);
+      width: 100%;
+      max-width: 480px;
+      padding: 48px 44px 44px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.32s var(--ease-out);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+    }
+    .reg-overlay.open .reg-modal {
+      transform: translateY(0);
+    }
+
+    .reg-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      cursor: pointer;
+      transition: background 0.2s;
+      color: rgba(255,255,255,0.55);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .reg-close:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+    }
+
+    .reg-eyebrow {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .reg-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .reg-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(20px, 2.5vw, 26px);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .reg-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.48);
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+
+    .reg-field {
+      margin-bottom: 20px;
+    }
+    .reg-label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.50);
+      margin-bottom: 8px;
+    }
+    .reg-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 13px 16px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .reg-input::placeholder {
+      color: rgba(255,255,255,0.22);
+    }
+    .reg-input:focus {
+      border-color: var(--accent);
+      background: rgba(64,104,216,0.08);
+    }
+
+    .reg-submit {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .reg-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      margin: 32px 0 24px;
+    }
+
+    .reg-meta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .reg-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-head);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.30);
+    }
+    .reg-meta-item svg {
+      width: 11px;
+      height: 11px;
+      stroke: rgba(255,255,255,0.30);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 480px) {
+      .reg-modal { padding: 40px 24px 32px; }
+    }
   </style>
 </head>
 <body>
@@ -535,7 +708,7 @@
         <li><a href="services.html" class="nav-link">Services</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
         <li class="nav-cta-item">
-          <a href="https://live.zoho.eu/rutn-cem-wkb" target="_blank" rel="noopener noreferrer" class="nav-cta" aria-label="Register for the webinar">Register Now</a>
+          <button onclick="openRegModal()" class="nav-cta" aria-label="Register for the webinar">Register Now</button>
         </li>
       </ul>
     </nav>
@@ -581,7 +754,7 @@
             </div>
           </div>
           <!-- CTA #1 — visible on page load -->
-          <a href="https://live.zoho.eu/rutn-cem-wkb" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Register for the Webinar</a>
+          <button onclick="openRegModal()" class="btn btn-primary">Register for the Webinar</button>
         </div>
       </div>
     </section>
@@ -681,9 +854,9 @@
 
             <div class="sc-divider"></div>
 
-            <a href="https://live.zoho.eu/rutn-cem-wkb" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:block;text-align:center;width:100%;box-sizing:border-box;">
+            <button onclick="openRegModal()" class="btn btn-primary" style="width:100%;justify-content:center;">
               Register Now
-            </a>
+            </button>
           </aside>
 
         </div>
@@ -723,7 +896,7 @@
           </h2>
         </div>
         <div class="bc-right">
-          <a href="https://live.zoho.eu/rutn-cem-wkb" target="_blank" rel="noopener noreferrer" class="btn btn-cta-primary">Reserve My Spot</a>
+          <button onclick="openRegModal()" class="btn btn-cta-primary">Reserve My Spot</button>
           <div class="bc-pills" aria-label="Session details">
             <div class="bc-pill">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
@@ -739,6 +912,59 @@
     </section>
 
   </main>
+
+  <!-- ════════════════════════════════════════
+       REGISTRATION MODAL
+  ════════════════════════════════════════ -->
+  <div class="reg-overlay" id="reg-overlay" role="dialog" aria-modal="true" aria-labelledby="reg-modal-title">
+    <div class="reg-modal">
+
+      <button class="reg-close" id="reg-close" aria-label="Close registration form">&#x2715;</button>
+
+      <div class="reg-eyebrow">Webinar Registration</div>
+      <h2 class="reg-title" id="reg-modal-title">Register for the Webinar</h2>
+      <p class="reg-subtitle">Thursday, April 9 &nbsp;·&nbsp; 1:00 PM ET &nbsp;·&nbsp; 30 Minutes &nbsp;·&nbsp; Live Q&amp;A</p>
+
+      <form id="reg-form" novalidate>
+
+        <div class="reg-field">
+          <label class="reg-label" for="reg-name">Full Name</label>
+          <input class="reg-input" type="text" id="reg-name" name="name" placeholder="Jane Smith" autocomplete="name" />
+        </div>
+
+        <div class="reg-field">
+          <label class="reg-label" for="reg-email">Email Address</label>
+          <input class="reg-input" type="email" id="reg-email" name="email" placeholder="jane@company.com" autocomplete="email" />
+        </div>
+
+        <div class="reg-field">
+          <label class="reg-label" for="reg-org">Organization</label>
+          <input class="reg-input" type="text" id="reg-org" name="organization" placeholder="Company or Organization" autocomplete="organization" />
+        </div>
+
+        <button type="submit" class="btn btn-primary reg-submit">Submit</button>
+
+      </form>
+
+      <div class="reg-divider"></div>
+
+      <div class="reg-meta">
+        <div class="reg-meta-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          30 Minutes
+        </div>
+        <div class="reg-meta-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.1 4.18 2 2 0 0 1 4.09 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Live Q&amp;A
+        </div>
+        <div class="reg-meta-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          April 9, 2025
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- ════════════════════════════════════════
        FOOTER
@@ -788,5 +1014,30 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    const overlay = document.getElementById('reg-overlay');
+    const closeBtn = document.getElementById('reg-close');
+
+    function openRegModal() {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('reg-name').focus();
+    }
+
+    function closeRegModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeRegModal);
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeRegModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeRegModal();
+    });
+  </script>
 </body>
 </html>
