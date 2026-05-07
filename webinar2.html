@@ -36,22 +36,17 @@
       display: block;
     }
 
-    /* layered gradient: keep image visible top-centre, darken bottom for text */
+    /* gradient only over bottom 30% of image */
     .hero-wrap::after {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to bottom,
-          rgba(9,18,36,0.08)  0%,
-          rgba(9,18,36,0.25) 35%,
-          rgba(9,18,36,0.80) 62%,
-          rgba(9,18,36,0.96) 100%
-        ),
-        linear-gradient(to right,
-          rgba(9,18,36,0.50) 0%,
-          transparent        50%
-        );
+      background: linear-gradient(to bottom,
+        transparent          0%,
+        transparent         70%,
+        rgba(9,18,36,0.82)  88%,
+        rgba(9,18,36,0.97) 100%
+      );
       pointer-events: none;
     }
 
