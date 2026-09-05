@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — CyberSec Gard</title>
+  <meta name="description" content="CyberSec Gard privacy policy — how we collect, use, and protect your personal information. Compliant with GDPR and CCPA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Token system ──────────────────────────────── */
+    :root {
+      --pp-bg:          #F8FAFD;
+      --pp-surface:     #FFFFFF;
+      --pp-text:        #0F172A;
+      --pp-text-muted:  #4A5568;
+      --pp-accent:      #3B5DD4;
+      --pp-border:      #D9E4F5;
+      --pp-label:       #64748B;
+      --pp-hero-bg:     #0B1524;
+      --pp-hero-text:   #E2EAF4;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --pp-bg:         #0B1524;
+        --pp-surface:    #0F1E35;
+        --pp-text:       #E2EAF4;
+        --pp-text-muted: #8BA4C4;
+        --pp-accent:     #6B8EEF;
+        --pp-border:     #1E3050;
+        --pp-label:      #6B8EEF;
+        --pp-hero-bg:    #060E1C;
+        --pp-hero-text:  #E2EAF4;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --pp-bg:         #0B1524;
+      --pp-surface:    #0F1E35;
+      --pp-text:       #E2EAF4;
+      --pp-text-muted: #8BA4C4;
+      --pp-accent:     #6B8EEF;
+      --pp-border:     #1E3050;
+      --pp-label:      #6B8EEF;
+      --pp-hero-bg:    #060E1C;
+      --pp-hero-text:  #E2EAF4;
+    }
+
+    /* ── Page shell ────────────────────────────────── */
+    body {
+      background: var(--pp-bg);
+      color: var(--pp-text);
+    }
+
+    /* ── Hero band ─────────────────────────────────── */
+    .pp-hero {
+      background: var(--pp-hero-bg);
+      padding: clamp(80px, 12vh, 120px) 0 clamp(48px, 7vh, 72px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .pp-hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 48px);
+    }
+
+    .pp-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--pp-accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .pp-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--pp-accent);
+      flex-shrink: 0;
+    }
+
+    .pp-hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--pp-hero-text);
+      text-wrap: balance;
+      margin-bottom: 20px;
+    }
+
+    .pp-hero-meta {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(226,234,244,0.40);
+    }
+
+    /* ── Document body ─────────────────────────────── */
+    .pp-doc {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(48px, 8vh, 80px) clamp(20px, 5vw, 48px) clamp(72px, 12vh, 120px);
+    }
+
+    /* Table of contents */
+    .pp-toc {
+      background: var(--pp-surface);
+      border: 1px solid var(--pp-border);
+      border-left: 3px solid var(--pp-accent);
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+
+    .pp-toc-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pp-label);
+      margin-bottom: 16px;
+    }
+
+    .pp-toc ol {
+      margin: 0;
+      padding: 0 0 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pp-toc li {
+      font-size: 14px;
+      color: var(--pp-text-muted);
+      line-height: 1.4;
+    }
+
+    .pp-toc a {
+      color: var(--pp-accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pp-toc a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    .pp-section {
+      margin-bottom: 52px;
+      padding-top: 8px;
+    }
+
+    .pp-section + .pp-section {
+      border-top: 1px solid var(--pp-border);
+      padding-top: 52px;
+    }
+
+    .pp-section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--pp-accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pp-section-label::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 2px;
+      background: var(--pp-accent);
+      flex-shrink: 0;
+    }
+
+    .pp-h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: clamp(18px, 2vw, 22px);
+      color: var(--pp-text);
+      line-height: 1.25;
+      text-wrap: balance;
+      margin-bottom: 18px;
+    }
+
+    .pp-body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15.5px;
+      line-height: 1.82;
+      color: var(--pp-text-muted);
+      max-width: 68ch;
+    }
+
+    .pp-body + .pp-body {
+      margin-top: 14px;
+    }
+
+    .pp-body strong {
+      color: var(--pp-text);
+      font-weight: 500;
+    }
+
+    .pp-body a {
+      color: var(--pp-accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .pp-body a:hover {
+      border-color: var(--pp-accent);
+    }
+
+    /* Data list (key-value pairs) */
+    .pp-dl {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--pp-border);
+    }
+
+    .pp-dl-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 0;
+    }
+
+    .pp-dl-row + .pp-dl-row {
+      border-top: 1px solid var(--pp-border);
+    }
+
+    .pp-dl-term {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--pp-label);
+      padding: 14px 16px;
+      background: var(--pp-surface);
+      border-right: 1px solid var(--pp-border);
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .pp-dl-def {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--pp-text-muted);
+      padding: 14px 16px;
+    }
+
+    /* Bullet list */
+    .pp-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pp-list li {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--pp-text-muted);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .pp-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--pp-accent);
+      opacity: 0.6;
+    }
+
+    .pp-list li strong {
+      color: var(--pp-text);
+      font-weight: 500;
+    }
+
+    /* Rights grid */
+    .pp-rights {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--pp-border);
+      border: 1px solid var(--pp-border);
+      margin: 20px 0;
+    }
+
+    .pp-right-item {
+      background: var(--pp-surface);
+      padding: 18px 20px;
+    }
+
+    .pp-right-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--pp-text);
+      margin-bottom: 5px;
+    }
+
+    .pp-right-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--pp-text-muted);
+    }
+
+    /* Contact callout */
+    .pp-contact {
+      background: var(--pp-surface);
+      border: 1px solid var(--pp-border);
+      border-top: 3px solid var(--pp-accent);
+      padding: 28px 32px;
+      margin-top: 20px;
+    }
+
+    .pp-contact-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pp-label);
+      margin-bottom: 10px;
+    }
+
+    .pp-contact p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--pp-text-muted);
+      margin: 0 0 6px;
+    }
+
+    .pp-contact a {
+      color: var(--pp-accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .pp-dl-row { grid-template-columns: 1fr; }
+      .pp-dl-term { border-right: none; border-bottom: 1px solid var(--pp-border); padding-bottom: 8px; }
+      .pp-toc { padding: 20px; }
+      .pp-contact { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       NAV
+  ════════════════════════════════════════ -->
+  <header class="nav-wrapper" id="nav" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="CyberSec Gard home">
+        <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="72" height="72" />
+        <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+      </a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="index.html"    class="nav-link">Home</a></li>
+        <li><a href="about.html"    class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="contact.html"  class="nav-link">Contact</a></li>
+        <li class="nav-cta-item">
+          <a href="discovery-call.html" class="nav-cta">Get Started</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════ -->
+    <section class="pp-hero" aria-labelledby="pp-title">
+      <div class="pp-hero-inner">
+        <div class="pp-eyebrow">Legal</div>
+        <h1 class="pp-hero-title" id="pp-title">Privacy Policy</h1>
+        <p class="pp-hero-meta">Last updated: September 2026 &nbsp;·&nbsp; Applies to cybersecgard.com</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         DOCUMENT
+    ════════════════════════════════════════ -->
+    <div class="pp-doc">
+
+      <!-- Table of Contents -->
+      <nav class="pp-toc" aria-label="Policy sections">
+        <div class="pp-toc-title">Contents</div>
+        <ol>
+          <li><a href="#who-we-are">Who We Are</a></li>
+          <li><a href="#information-we-collect">Information We Collect</a></li>
+          <li><a href="#how-we-use">How We Use Your Information</a></li>
+          <li><a href="#legal-basis">Legal Basis for Processing (GDPR)</a></li>
+          <li><a href="#third-parties">Third-Party Services</a></li>
+          <li><a href="#cookies">Cookies &amp; Analytics</a></li>
+          <li><a href="#international-transfers">International Data Transfers</a></li>
+          <li><a href="#retention">Data Retention</a></li>
+          <li><a href="#your-rights">Your Rights</a></li>
+          <li><a href="#contact">Contact &amp; Requests</a></li>
+        </ol>
+      </nav>
+
+      <!-- 1. Who We Are -->
+      <section class="pp-section" id="who-we-are" aria-labelledby="h-who">
+        <div class="pp-section-label">Section 1</div>
+        <h2 class="pp-h2" id="h-who">Who We Are</h2>
+        <p class="pp-body">
+          CyberSec Gard provides DevSecOps consulting, security assessments, and training services to organizations in the United States and European Union. We operate the website at <strong>cybersecgard.com</strong> and associated landing pages.
+        </p>
+        <p class="pp-body">
+          For the purposes of the EU General Data Protection Regulation (GDPR), CyberSec Gard acts as the <strong>data controller</strong> for personal information collected through our website and webinar registration forms. Questions about this policy may be directed to <a href="mailto:info@cybersecgard.com">info@cybersecgard.com</a>.
+        </p>
+      </section>
+
+      <!-- 2. Information We Collect -->
+      <section class="pp-section" id="information-we-collect" aria-labelledby="h-collect">
+        <div class="pp-section-label">Section 2</div>
+        <h2 class="pp-h2" id="h-collect">Information We Collect</h2>
+        <p class="pp-body">
+          We collect personal information that you provide directly to us when registering for a webinar or contacting us through our website. This may include:
+        </p>
+        <ul class="pp-list">
+          <li><strong>Full name</strong></li>
+          <li><strong>Email address</strong></li>
+          <li><strong>Organization or company name</strong></li>
+          <li><strong>Job title</strong></li>
+          <li><strong>Phone number</strong> (where provided)</li>
+        </ul>
+        <p class="pp-body">
+          We also collect limited technical data automatically through Google Analytics when you visit our website — see <a href="#cookies">Section 6</a> for details.
+        </p>
+        <p class="pp-body">
+          We do not collect payment information, government identifiers, or any special categories of personal data under GDPR Article 9.
+        </p>
+      </section>
+
+      <!-- 3. How We Use -->
+      <section class="pp-section" id="how-we-use" aria-labelledby="h-use">
+        <div class="pp-section-label">Section 3</div>
+        <h2 class="pp-h2" id="h-use">How We Use Your Information</h2>
+        <p class="pp-body">We use the information we collect for the following purposes:</p>
+        <ul class="pp-list">
+          <li><strong>Webinar registration &amp; delivery</strong> — to confirm your registration, send event reminders, and provide access details.</li>
+          <li><strong>Post-event follow-up</strong> — to share recordings, slides, and resources related to the event you attended.</li>
+          <li><strong>Marketing communications</strong> — to inform you of upcoming webinars, reports, and services. You may opt out at any time.</li>
+          <li><strong>Service enquiries</strong> — to respond to questions submitted through our contact forms.</li>
+          <li><strong>Analytics &amp; improvement</strong> — to understand how our website is used and improve our content and services.</li>
+        </ul>
+        <p class="pp-body">
+          We do not sell your personal information to third parties.
+        </p>
+      </section>
+
+      <!-- 4. Legal Basis (GDPR) -->
+      <section class="pp-section" id="legal-basis" aria-labelledby="h-basis">
+        <div class="pp-section-label">Section 4 &nbsp;·&nbsp; GDPR</div>
+        <h2 class="pp-h2" id="h-basis">Legal Basis for Processing</h2>
+        <p class="pp-body">
+          For individuals in the European Economic Area (EEA) and the United Kingdom, we process personal data on the following legal bases under GDPR Article 6:
+        </p>
+        <div class="pp-dl" role="table" aria-label="Legal bases for processing">
+          <div class="pp-dl-row" role="row">
+            <div class="pp-dl-term" role="rowheader">Consent</div>
+            <div class="pp-dl-def" role="cell">Sending marketing emails and newsletters. You may withdraw consent at any time by clicking the unsubscribe link in any email or by contacting us directly.</div>
+          </div>
+          <div class="pp-dl-row" role="row">
+            <div class="pp-dl-term" role="rowheader">Legitimate Interests</div>
+            <div class="pp-dl-def" role="cell">Processing registrations, responding to service enquiries, and post-event follow-ups directly related to an event you registered for. We have assessed that these interests are not overridden by your rights and freedoms.</div>
+          </div>
+          <div class="pp-dl-row" role="row">
+            <div class="pp-dl-term" role="rowheader">Contract</div>
+            <div class="pp-dl-def" role="cell">Where we have a service agreement in place, processing necessary to deliver that service.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Third-Party Services -->
+      <section class="pp-section" id="third-parties" aria-labelledby="h-third">
+        <div class="pp-section-label">Section 5</div>
+        <h2 class="pp-h2" id="h-third">Third-Party Services</h2>
+        <p class="pp-body">
+          We work with the following third-party services that may process your personal information on our behalf. Each acts as a data processor under our instruction.
+        </p>
+
+        <div class="pp-dl" style="margin-top:20px;" role="table" aria-label="Third-party processors">
+          <div class="pp-dl-row" role="row">
+            <div class="pp-dl-term" role="rowheader">HubSpot, Inc.</div>
+            <div class="pp-dl-def" role="cell">
+              We use HubSpot to manage webinar registration forms and contact records. HubSpot is headquartered in the United States and is certified under the EU-US Data Privacy Framework. For more information, see <a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener noreferrer">HubSpot's Privacy Policy</a>.
+            </div>
+          </div>
+          <div class="pp-dl-row" role="row">
+            <div class="pp-dl-term" role="rowheader">Google LLC</div>
+            <div class="pp-dl-def" role="cell">
+              We use Google Analytics 4 to analyze website traffic. Data collected is anonymized and aggregated. Google LLC is headquartered in the United States and participates in the EU-US Data Privacy Framework. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.
+            </div>
+          </div>
+        </div>
+
+        <p class="pp-body" style="margin-top:18px;">
+          We do not share your personal information with any other third parties except as required by law.
+        </p>
+      </section>
+
+      <!-- 6. Cookies -->
+      <section class="pp-section" id="cookies" aria-labelledby="h-cookies">
+        <div class="pp-section-label">Section 6</div>
+        <h2 class="pp-h2" id="h-cookies">Cookies &amp; Analytics</h2>
+        <p class="pp-body">
+          Our website uses cookies — small text files stored in your browser — through Google Analytics to collect information about how visitors use our site. The data collected is aggregated and does not identify you personally.
+        </p>
+        <p class="pp-body">
+          Google Analytics cookies collect information such as the pages visited, time spent on the site, and general geographic region. This data helps us understand what content is most useful and where to improve.
+        </p>
+        <p class="pp-body">
+          <strong>Managing cookies:</strong> You can disable Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>. You may also configure your browser to refuse or delete cookies at any time; doing so will not affect your ability to use our website.
+        </p>
+        <p class="pp-body">
+          We do not use advertising, targeting, or social media tracking cookies.
+        </p>
+      </section>
+
+      <!-- 7. International Transfers -->
+      <section class="pp-section" id="international-transfers" aria-labelledby="h-transfers">
+        <div class="pp-section-label">Section 7 &nbsp;·&nbsp; GDPR</div>
+        <h2 class="pp-h2" id="h-transfers">International Data Transfers</h2>
+        <p class="pp-body">
+          If you are located in the European Economic Area (EEA) or United Kingdom, your personal data may be transferred to and processed in the United States, where our service providers HubSpot and Google are based.
+        </p>
+        <p class="pp-body">
+          These transfers are protected by appropriate safeguards:
+        </p>
+        <ul class="pp-list">
+          <li>Both HubSpot and Google LLC are certified under the <strong>EU-US Data Privacy Framework</strong>, which provides an adequacy mechanism recognized by the European Commission.</li>
+          <li>Where required, transfers are also covered by <strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission.</li>
+        </ul>
+        <p class="pp-body">
+          You may request a copy of the safeguards in place for any transfer by contacting us at <a href="mailto:info@cybersecgard.com">info@cybersecgard.com</a>.
+        </p>
+      </section>
+
+      <!-- 8. Retention -->
+      <section class="pp-section" id="retention" aria-labelledby="h-retention">
+        <div class="pp-section-label">Section 8</div>
+        <h2 class="pp-h2" id="h-retention">Data Retention</h2>
+        <p class="pp-body">
+          We retain your personal information for as long as necessary to fulfil the purposes described in this policy, unless a longer retention period is required by law.
+        </p>
+        <div class="pp-dl" style="margin-top:16px;" role="table" aria-label="Retention periods">
+          <div class="pp-dl-row" role="row">
+            <div class="pp-dl-term" role="rowheader">Webinar registrants</div>
+            <div class="pp-dl-def" role="cell">Up to 3 years from the event date, unless you request earlier deletion or unsubscribe from all communications.</div>
+          </div>
+          <div class="pp-dl-row" role="row">
+            <div class="pp-dl-term" role="rowheader">Contact enquiries</div>
+            <div class="pp-dl-def" role="cell">Up to 2 years from the date of last contact.</div>
+          </div>
+          <div class="pp-dl-row" role="row">
+            <div class="pp-dl-term" role="rowheader">Analytics data</div>
+            <div class="pp-dl-def" role="cell">Retained in Google Analytics for 14 months (aggregated, non-personal).</div>
+          </div>
+        </div>
+        <p class="pp-body" style="margin-top:16px;">
+          When your data is no longer required, it is securely deleted or anonymized.
+        </p>
+      </section>
+
+      <!-- 9. Your Rights -->
+      <section class="pp-section" id="your-rights" aria-labelledby="h-rights">
+        <div class="pp-section-label">Section 9</div>
+        <h2 class="pp-h2" id="h-rights">Your Rights</h2>
+
+        <p class="pp-body">
+          <strong>If you are in the EEA or UK (GDPR)</strong>, you have the following rights regarding your personal data:
+        </p>
+
+        <div class="pp-rights" role="list" aria-label="GDPR rights">
+          <div class="pp-right-item" role="listitem">
+            <div class="pp-right-title">Right of Access</div>
+            <div class="pp-right-desc">Request a copy of the personal data we hold about you.</div>
+          </div>
+          <div class="pp-right-item" role="listitem">
+            <div class="pp-right-title">Right to Rectification</div>
+            <div class="pp-right-desc">Request correction of inaccurate or incomplete data.</div>
+          </div>
+          <div class="pp-right-item" role="listitem">
+            <div class="pp-right-title">Right to Erasure</div>
+            <div class="pp-right-desc">Request deletion of your personal data ("right to be forgotten").</div>
+          </div>
+          <div class="pp-right-item" role="listitem">
+            <div class="pp-right-title">Right to Restriction</div>
+            <div class="pp-right-desc">Request that we limit how we process your data in certain circumstances.</div>
+          </div>
+          <div class="pp-right-item" role="listitem">
+            <div class="pp-right-title">Right to Portability</div>
+            <div class="pp-right-desc">Receive your data in a structured, machine-readable format.</div>
+          </div>
+          <div class="pp-right-item" role="listitem">
+            <div class="pp-right-title">Right to Object</div>
+            <div class="pp-right-desc">Object to processing based on legitimate interests, including direct marketing.</div>
+          </div>
+          <div class="pp-right-item" role="listitem">
+            <div class="pp-right-title">Withdraw Consent</div>
+            <div class="pp-right-desc">Withdraw consent for marketing at any time without affecting prior processing.</div>
+          </div>
+          <div class="pp-right-item" role="listitem">
+            <div class="pp-right-title">Lodge a Complaint</div>
+            <div class="pp-right-desc">File a complaint with your local data protection authority if you believe your rights have been violated.</div>
+          </div>
+        </div>
+
+        <p class="pp-body" style="margin-top:28px;">
+          <strong>If you are a California resident (CCPA)</strong>, you have the right to:
+        </p>
+        <ul class="pp-list">
+          <li><strong>Know</strong> what personal information we collect, use, disclose, and sell (we do not sell personal information).</li>
+          <li><strong>Delete</strong> personal information we have collected from you, subject to certain exceptions.</li>
+          <li><strong>Opt out</strong> of the sale or sharing of personal information. CyberSec Gard does not sell or share personal information for cross-context behavioral advertising.</li>
+          <li><strong>Non-discrimination</strong> — we will not penalize you for exercising any of these rights.</li>
+        </ul>
+        <p class="pp-body">
+          To exercise any of the rights above, please contact us using the details in Section 10. We will respond to verifiable requests within 30 days (GDPR) or 45 days (CCPA).
+        </p>
+      </section>
+
+      <!-- 10. Contact -->
+      <section class="pp-section" id="contact" aria-labelledby="h-contact">
+        <div class="pp-section-label">Section 10</div>
+        <h2 class="pp-h2" id="h-contact">Contact &amp; Requests</h2>
+        <p class="pp-body">
+          For any questions about this Privacy Policy, to exercise your rights, or to submit a data subject request, please contact us:
+        </p>
+        <div class="pp-contact">
+          <div class="pp-contact-label">Privacy Contact</div>
+          <p><strong>CyberSec Gard</strong></p>
+          <p>Email: <a href="mailto:info@cybersecgard.com">info@cybersecgard.com</a></p>
+          <p>Phone: <a href="tel:+13142283004">+1 (314) 228-3004</a></p>
+          <p>St. Louis, MO, United States</p>
+        </div>
+        <p class="pp-body" style="margin-top:20px;">
+          We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. We encourage you to review this policy periodically.
+        </p>
+      </section>
+
+    </div><!-- /pp-doc -->
+
+  </main>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo footer-logo" aria-label="CyberSec Gard home">
+            <img src="Logo vector.svg" alt="" class="logo-img" aria-hidden="true" width="40" height="40" />
+            <span class="logo-text">CYBERSEC <strong class="logo-gard">GARD</strong></span>
+          </a>
+          <p class="footer-tagline">Your trusted guide on the DevSecOps journey — delivering expert solutions that bridge development, security, and operations with confidence.</p>
+          <div class="footer-social" aria-label="Social links">
+            <a href="https://www.linkedin.com/company/cybersec-gard" target="_blank" rel="noopener noreferrer" class="footer-social-link">LinkedIn</a>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-labelledby="fn-services">
+          <h4 class="footer-nav-title" id="fn-services">Services</h4>
+          <ul role="list">
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="discovery-call.html">Free Discovery Call</a></li>
+            <li><a href="maturity-assessment.html">Core DevSecOps Maturity Assessment</a></li>
+            <li><a href="cicd-security.html">Tailored CI/CD Pipeline Security Integration</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-nav" aria-labelledby="fn-company">
+          <h4 class="footer-nav-title" id="fn-company">Company</h4>
+          <ul role="list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy-policy.html" aria-current="page">Privacy Policy</a></li>
+          </ul>
+        </nav>
+        <div class="footer-contact">
+          <h4 class="footer-nav-title">Contact</h4>
+          <address>
+            <p><a href="mailto:info@cybersecgard.com">info@cybersecgard.com</a></p>
+            <p><a href="tel:+13142283004">+1 (314) 228-3004</a></p>
+            <p>St. Louis, MO<br/>United States</p>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">2026 CyberSec Gard.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
